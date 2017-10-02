@@ -2,7 +2,7 @@
 
 UVa 10038 - Jolly Jumpers * (use 1D boolean flags to check [1..n − 1])
 
-20079580 - Accepted  0.250  2017-09-27 23:16:32
+20073317
 
 https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=979
 https://uva.onlinejudge.org/external/100/10038.pdf
@@ -64,8 +64,8 @@ class UVa10038 {
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva10038_in.txt";
 
     public void run() {
-        List<String> readData = read();
-        //List<String> readData = readFile(fileName);
+        //List<String> readData = read();
+        List<String> readData = readFile(fileName);
 
         for(int idx = 0; idx < readData.size(); idx++) {
             String line = readData.get(idx);
