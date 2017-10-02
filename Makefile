@@ -35,4 +35,9 @@ default:
     
 #######################################################
 
+10855: 
+	--mkdir -p target/classes
+	@echo "Runnning UVA10855"
+	javac $(SRC)/UVa10855.java $(SRC)/UVaBase.java -d $(TARGET)
+	java -cp $(TARGET) uva10855.Main < $(RSRC)/uva10855_in.txt | diff -s -y $(RSRC)/uva10855_out.txt -
 
