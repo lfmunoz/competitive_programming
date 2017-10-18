@@ -45,7 +45,7 @@ class UVa10920 {
         }
     }
 
-    private void compute(Long SZ, Long P) {
+    private int compute(Long SZ, Long P) {
         final int LEFT = 0;
         final int RIGHT = 1;
         final int UP = 2;
@@ -61,46 +61,67 @@ class UVa10920 {
         Y += (x-1);
 
 
-        int up = 1 + ((x-1)*2);
-        int left =1 + ((x-1)*2);
-        int right =2 + ((x-1)*2);
-        int down = 2  + ((x-1)*2);
+        int up0 = x;
+        int left = x + (x-1);
+        int down = x*2;
+        int right = x*2;
+        int up1 = x -1;
 
-        int movement = up/2;
-        while( !n.equals(P)){
-            movement++;
-            if (state == UP) {
-                X += 1;
-                if (movement == up) {
-                    up += 2;
-                    state = LEFT;
-                    movement = 0;
-                }
-            } else if (state == DOWN) {
-                X -= 1;
-                if (movement == down ) {
-                    state = RIGHT;
-                    down += 2;
-                    movement = 0;
-                }
-            } else if (state == LEFT) {
-                Y -= 1;
-                if (movement == left ) {
-                    state = DOWN;
-                    left += 2;
-                    movement = 0;
-                }
-            } else if (state == RIGHT) {
-                Y += 1;
-                if (movement == right ) {
-                    state = UP;
-                    right += 2;
-                    movement = 0;
-                }
-            }
-            n++;
+
+
+        if(n+up0 < P) {
+            X += up0;
+            n +=  up0;
+        } else {
+            long diff = (P -n);
+            X += diff;
+            System.out.println("Line = " + X + ", column = " + Y + ".");
+            return 0;
         }
-        System.out.println("Line = " + X + ", column = " + Y + ".");
+        if (n+left < P) {
+
+            Y -= left;
+            n += left;
+        } else {
+            long diff =(P -n);
+            Y -= diff;
+            System.out.println("Line = " + X + ", column = " + Y + ".");
+            return 0;
+        }
+        if (n+down < P) {
+
+            X -= down;
+            n +=  down;
+        } else {
+            long diff = (P -n);
+            X -= diff;
+            System.out.println("Line = " + X + ", column = " + Y + ".");
+            return 0;
+        }
+        if (n+right < P) {
+
+            Y += right;
+            n +=  right;
+        } else {
+            long diff = (P -n);
+            Y += diff;
+            System.out.println("Line = " + X + ", column = " + Y + ".");
+            return 0;
+        }
+
+        if(n+up1 < P) {
+            X += up1;
+            n +=  up1;
+        } else {
+            long diff =(P -n);
+            X += diff;
+            System.out.println("Line = " + X + ", column = " + Y + ".");
+            return 0;
+        }
+        System.out.println("ERROR");
+        return 1;
+
+
     }
 
     private int jumpSpiral(Long P) {
