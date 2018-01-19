@@ -9,10 +9,10 @@ TARGET=target/classes
 .PHONY: default
 
 default:
-	@echo "10038 Jolly Jumper"
-	@echo "11340 Newspaper"
-	@echo "10855 Rotated squares"
-	@echo "10920 Spiral Tap"
+	@echo "10038 Jolly Jumper - Done"
+	@echo "11340 Newspaper - Done"
+	@echo "10855 Rotated squares - Done"
+	@echo "10920 Spiral Tap - Done"
 	@echo "11581 Grid Successors"
 	@echo "00146 ID Codes"
 	@echo "10107 What is the Median"
@@ -45,4 +45,11 @@ default:
 	@echo "Runnning UVA10920"
 	javac $(SRC)/UVa10920.java $(SRC)/UVaBase.java -d $(TARGET)
 	java -cp $(TARGET) uva10920.Main < $(RSRC)/uva10920_in.txt | diff -s -y $(RSRC)/uva10920_out.txt -
+
+#######################################################
+11581:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11581"
+	javac $(SRC)/UVa11581.java $(SRC)/UVaBase.java -d $(TARGET)
+	java -cp $(TARGET) uva11581.Main < $(RSRC)/uva11581_in.txt | diff -s -y $(RSRC)/uva11581_out.txt -
 
