@@ -27,6 +27,7 @@ Runtime
 
 package uva$NAME;
 
+// Copy-paste from here...
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -112,7 +113,7 @@ cat >> $PWD/Makefile << EOF
 $NAME:
 	--mkdir -p target/classes
 	@echo "Runnning UVA${NAME}"
-	javac (SRC)/UVa${NAME}.java (SRC)/UVaBase.java -d (TARGET)
+	javac (SRC)/UVa${NAME}.java -d (TARGET)
 	java -cp (TARGET) uva$NAME.Main < (RSRC)/uva${NAME}_in.txt | diff -s -y (RSRC)/uva${NAME}_out.txt -
 
 EOF
