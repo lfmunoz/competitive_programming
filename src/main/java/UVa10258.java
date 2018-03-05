@@ -15,7 +15,11 @@ package uva10258;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -33,9 +37,79 @@ class Main {
 
 class Contestant {
     private int contestantId;
-    private int problemsSolved;
-    private int penalty;
+    public int problemsSolved;
+    public int penalty;
 
+    private Set<Integer> solvedSet = new HashSet<Integer>();
+    private Map<Integer, Integer> solveTax = new HashMap<Integer, Integer>();
+
+    Contestant(int contestant, int problem, int penalty, boolean isCorrect) {
+        this.contestantId = contestant;
+        if (isCorrect) {
+            this.problemsSolved = 1;
+            this.penalty = penalty;
+            this.solvedSet.add(problem);
+        } else {
+            this.contestantId = contestant;
+            this.problemsSolved = 0;
+            solveTax.put(problem, 20);
+            this.penalty = 0;
+        }
+    }
+
+    Contestant(int contestant) {
+        this.contestantId = contestant;
+        this.problemsSolved = 0;
+        this.penalty = 0;
+    }
+
+
+    /*
+    @Override
+    public int compareTo(Contestant other){
+        // compareTo should return < 0 if this is supposed to be
+        // less than other, > 0 if this is supposed to be greater than
+        // other and 0 if they are supposed to be equal
+        if (this.problemsSolved > other.problemsSolved) {
+            return 1;
+        } else if (this.problemsSolved < other.problemsSolved) {
+            return -1;
+        } else {
+            if (this.penalty > other.problemsSolved) {
+                return -1;
+            } else if (this.penalty < other.penalty) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+    }
+    */
+
+    public void add_correct(int problem, int penalty) {
+       if(!solvedSet.contains(problem)) {
+          this.problemsSolved += 1;
+          this.penalty += penalty;
+          if (solveTax.containsKey(problem)) {
+            this.penalty += solveTax.get(problem);
+          }
+          this.solvedSet.add(problem);
+       }
+    }
+
+    public void add_incorrect(int problem, int penalty) {
+        // if we haven't solved problem
+        if(!solvedSet.contains(problem)) {
+            // if we no entry for this problem add an entry
+            if (!solveTax.containsKey(problem)) {
+                solveTax.put(problem, 20);
+           // if we have an entry increment entry
+            } else {
+                int updatePenalty = solveTax.get(problem);
+                solveTax.put(problem, updatePenalty + 20);
+            }
+        }
+    }
 
     public void display() {
         System.out.println( Integer.toString(contestantId) + " " +
@@ -51,11 +125,11 @@ class UVa10258 {
 
 
     //Map<Integer, Map<Integer, Integer>> scoreBoard = new HashMap<>();
-    List<Contestant> scoreBoard = new ArrayList<>();
+    List<Contestant> scoreBoard = Arrays.asList(new Contestant[101]);
 
     public void run() {
-        Scanner scan = readFile(fileName);
-        //Scanner scan =read();
+        //Scanner scan = readFile(fileName);
+        Scanner scan =read();
 
         int num = Integer.parseInt(scan.nextLine()); // number of sets
         String blank = scan.nextLine(); // blank line
@@ -74,26 +148,29 @@ class UVa10258 {
                     correct(contestant, problem, penalty);
                 } else if (outcome.equals("I")) {
                     incorrect(contestant, problem, penalty);
+                } else {
+                    neither(contestant, problem, penalty);
+
                 }
+            } else {
+                compute();
+                scoreBoard = Arrays.asList(new Contestant[101]);
+                System.out.println("");
             }
         } // end of while
         compute();
+        //System.out.println("");
+
     } // end of run
 
     private void correct(int contestant, int problem, int penalty) {
-
+       // System.out.println(Integer.toString(contestant));
         // contestant is not known
-        if (!scoreBoard.containsKey(contestant)) {
-        if (!scoreBoard.containsKey(contestant)) {
-            Map<Integer, Integer> problem_entry = new HashMap<>();
-            problem_entry.put(problem, penalty);
-            scoreBoard.put(contestant, problem_entry);
+        if (scoreBoard.get(contestant) == null) {
+            scoreBoard.set(contestant, new Contestant(contestant, problem, penalty, true));
         // contestant is known
         } else {
-            Map<Integer, Integer> contestant_entry = scoreBoard.get(contestant);
-            if (!contestant_entry.containsKey(problem)) {
-                contestant_entry.put(problem, penalty);
-            }
+            scoreBoard.get(contestant).add_correct(problem, penalty);
         }
     }
 
@@ -104,36 +181,60 @@ class UVa10258 {
      */
     private void incorrect(int contestant, int problem, int penalty) {
         // contestant is not known
-        if (!scoreBoard.containsKey(contestant)) {
-            Map<Integer, Integer> problem_entry = new HashMap<>();
-            problem_entry.put(problem, 20);
-            scoreBoard.put(contestant, problem_entry);
-        // contestant is known
+        if (scoreBoard.get(contestant) == null) {
+            scoreBoard.set(contestant, new Contestant(contestant, problem, penalty, false));
+            // contestant is known
         } else {
-            Map<Integer, Integer> contestant_entry = scoreBoard.get(contestant);
-            if (!contestant_entry.containsKey(problem)) {
-                contestant_entry.put(problem, penalty);
-            } else {
-               Integer penalty_entry = contestant_entry.get(problem);
-               contestant_entry.put(problem, 20+penalty_entry);
-            }
+            scoreBoard.get(contestant).add_incorrect(problem, penalty);
         }
+    }
 
+    private void neither(int contestant, int problem, int penalty) {
+        // contestant is not known
+       if (scoreBoard.get(contestant) == null) {
+           scoreBoard.set(contestant, new Contestant(contestant));
+        }
     }
 
     private void compute() {
-        for (Integer contestantKey : scoreBoard.keySet()) {
-            Map<Integer, Integer> problem = scoreBoard.get(contestantKey);
-            Integer totalProblems = 0;
-            Integer totalPenalty = 0;
-            for (Integer problemKey: problem.keySet()) {
-                totalProblems++;
-                totalPenalty += problem.get(problemKey);
+        //Collections.sort(scoreBoard);
+        Collections.sort(scoreBoard, new Comparator<Contestant>() {
+            @Override
+            public int compare(Contestant o1, Contestant o2) {
+                if (o1 == null && o2 == null) {
+                    return 0;
+                }
+                if (o1 == null) {
+                    return 1;
+                }
+                if (o2 == null) {
+                    return -1;
+                }
+                if (o1.problemsSolved > o2.problemsSolved) {
+                    return -1;
+                } else if (o1.problemsSolved < o2.problemsSolved) {
+                    return 1;
+                } else {
+                    //return 0;
+
+                    if (o1.penalty > o2.penalty) {
+                        return 1;
+                    } else if (o1.penalty < o2.penalty) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+
+                }
             }
-            System.out.println(Integer.toString(contestantKey) + " " +
-            Integer.toString(totalProblems) + " " +
-                    Integer.toString(totalPenalty));
+        });
+
+        for(int c = 0; c < scoreBoard.size(); c++) {
+            if(scoreBoard.get(c) != null) {
+               scoreBoard.get(c).display();
+            }
         }
+
     }
 
     ////////////////////////////////////////////////////////////////////
