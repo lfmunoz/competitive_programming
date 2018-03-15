@@ -31,8 +31,8 @@ class UVa11926 {
     private final int MAX_BIT = 1000001;
 
     public void run() {
-        Scanner scan =readFile(fileName);
-        //Scanner scan =read();
+        //Scanner scan =readFile(fileName);
+        Scanner scan =read();
 
 
         while (true) {
@@ -55,7 +55,7 @@ class UVa11926 {
                 int end = Integer.parseInt(taskArr[1]);
                 //System.out.printf("%d %d%n", start, end);
                 if (check(calendar, start, end)) {
-                    calendar.set(start, end+1);
+                    calendar.set(start, end);
                 } else {
                     System.out.println("CONFLICT");
                     doneFlag = true;
@@ -79,7 +79,7 @@ class UVa11926 {
                     if (cap > MAX_BIT) {
                         cap = MAX_BIT;
                     }
-                    if (check(calendar, i+start, cap-1)) {
+                    if (check(calendar, i+start, cap)) {
                         calendar.set(i+start, cap);
                     } else {
                         System.out.println("CONFLICT");
@@ -97,8 +97,9 @@ class UVa11926 {
 
     private boolean check(BitSet calendar, int start, int end) {
         //System.out.printf("start %d to end %d %n", start, end);
-        BitSet subset = calendar.get(start, end);t 
-        if (0 == subset.cardinality() || "{0}".equals(subset.toString())) {
+        BitSet subset = calendar.get(start, end);
+        if (0 == subset.cardinality() ){
+        //if (0 == subset.cardinality() || "{0}".equals(subset.toString())) {
             return true;
         } else {
             return false;
