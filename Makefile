@@ -19,7 +19,7 @@ default:
 	@echo "---- Java Collections ##"
 	@echo " 00146 ID Codes - [Done]"
 	@echo " 10107 What is the Median - [Done]"
-	@echo " 10258 Contest Scoreboard"
+	@echo " 10258 Contest Scoreboard - [Done]"
 	@echo "---- Bit Manipulation ##"
 	@echo " 11926 Multitasking"
 	@echo " 11933 Splitting Numbers"
@@ -35,6 +35,7 @@ default:
 	@echo "---- Java TreeMap ----"
 	@echo "---- Java TreeSet ----"
 	@echo "---- Java PriorityQueue ----"
+	@echo ""
 	@echo "---- Graph Data Structures ----"
 	@echo "---- Union-Find Disjint Sets ----"
 	@echo "---- Tree-related Data Structures ----"
@@ -99,4 +100,11 @@ default:
 	@echo "Runnning UVA10258"
 	javac $(SRC)/UVa10258.java -d $(TARGET)
 	java -cp $(TARGET) uva10258.Main < $(RSRC)/uva10258_in.txt | diff -s -y $(RSRC)/uva10258_out.txt -
+
+#######################################################
+11926:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11926"
+	javac $(SRC)/UVa11926.java -d $(TARGET)
+	java -cp $(TARGET) uva11926.Main < $(RSRC)/uva11926_in.txt | diff -s -y $(RSRC)/uva11926_out.txt -
 

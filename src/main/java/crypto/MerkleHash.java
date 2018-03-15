@@ -9,81 +9,88 @@ string, or two other MerkleHash instances.
 
 https://github.com/cliftonm/MerkleTree/blob/master/MerkleHash.cs
 
+*/
+
+
+import java.io.ByteArrayOutputStream;
+import java.security.MessageDigest;
+import java.util.Arrays;
+
 public class MerkleHash
 {
-    public byte[] value;
-    protected MerkleHash()
-    {
+
+   public byte[] value;
+
+
+   //////////////////////////////////////////////////////////////////////////////
+    // Static Methods
+    ////////////////////////////////////////////////////////////////////////
+   public static MerkleHash create(byte[] buffer)
+   {
+      MerkleHash hash = new MerkleHash();
+      hash.computeHash(buffer);
+      return hash;
+   }
+
+   public static MerkleHash create(String buffer) {
+       try {
+           return create(buffer.getBytes("UTF-8"));
+       } catch (Exception e) {
+           e.printStackTrace();
+           return null;
+       }
+   }
+   public static MerkleHash create(MerkleHash left, MerkleHash right)
+   {
+       try {
+           ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+           outputStream.write(left.value);
+           outputStream.write(right.value);
+           return create(outputStream.toByteArray());
+       } catch (Exception e) {
+           e.printStackTrace();
+           return null;
+       }
+   }
+
+   public static boolean equals(MerkleHash h1, MerkleHash h2) {
+       return Arrays.equals(h1.value, h2.value);
+   }
+
+    public static boolean notEquals(MerkleHash h1, MerkleHash h2) {
+        return !Arrays.equals(h1.value, h2.value);
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////
+    // Object methods
+    ////////////////////////////////////////////////////////////////////////
+    public void computeHash(byte[] buffer) {
+       try {
+           MessageDigest digest = MessageDigest.getInstance("SHA-256");
+           byte[] hash = digest.digest(buffer);
+           setHash(hash);
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
 
     }
 
-    public static MerkleHash create(byte[] buffer)
+    public void setHash(byte[] hash) {
+       value = hash;
+    }
+    public boolean equals(byte[] hash)
     {
-        MerkleHash hash = new MerkleHash();
-        hash.computeHash(buffer);
-        return hash;
+        return Arrays.equals(value, hash);
     }
 
-    public static MerkleHash create(String buffer)
+    public boolean equals(MerkleHash hash)
     {
-        return create(Encoding.UTF8.GetBytes(buffer));
-    }
-
-    public static MerkleHash create(MerkleHash left, MerkleHash right)
-    {
-        return create(left.value.create(right.value).toArray());
-    }
-
-    public static equal(MerkleHash h1, MerkleHash h2)
-    {
-        return h1.equals(h2);
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
-    public override bool Equals(object obj)
-    {
-        MerkleTree.Contract(() => obj is MerkleHash, "rvalue is not a MerkleHash");
-        return Equals((MerkleHash)obj);
-    }
-
-    public override string ToString()
-    {
-        return BitConverter.ToString(Value).Replace("-", "");
-    }
-
-    public void ComputeHash(byte[] buffer)
-    {
-        SHA256 sha256 = SHA256.Create();
-        SetHash(sha256.ComputeHash(buffer));
-    }
-
-    public void SetHash(byte[] hash)
-    {
-        MerkleTree.Contract(() => hash.Length == Constants.HASH_LENGTH, "Unexpected hash length.");
-        Value = hash;
-    }
-
-    public bool Equals(byte[] hash)
-    {
-        return Value.SequenceEqual(hash);
-    }
-
-    public bool Equals(MerkleHash hash)
-    {
-        bool ret = false;
-
-        if (((object)hash) != null)
-        {
-            ret = Value.SequenceEqual(hash.Value);
+        if (hash != null) {
+            return Arrays.equals(value, hash.value);
+        } else {
+            return false;
         }
-
-        return ret;
     }
-}
 
 }
- */

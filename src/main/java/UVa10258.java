@@ -15,8 +15,6 @@ package uva10258;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.text.Collator;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -30,7 +28,6 @@ import java.util.Set;
 class Main {
     public static void main(String[] args) throws Exception {
         UVa10258 uva = new UVa10258();
-        //uva.runTest();
         uva.run();
     }
 }
@@ -40,22 +37,26 @@ class Contestant {
     public int problemsSolved;
     public int penalty;
 
-    private Set<Integer> solvedSet = new HashSet<Integer>();
-    private Map<Integer, Integer> solveTax = new HashMap<Integer, Integer>();
+    private Set<Integer> solvedSet = new HashSet<>();
+    private Map<Integer, Integer> solveTax = new HashMap<>();
 
-    Contestant(int contestant, int problem, int penalty, boolean isCorrect) {
+
+    // new correct entry
+    Contestant(int contestant, int problem, int penalty) {
         this.contestantId = contestant;
-        if (isCorrect) {
-            this.problemsSolved = 1;
-            this.penalty = penalty;
-            this.solvedSet.add(problem);
-        } else {
-            this.contestantId = contestant;
-            this.problemsSolved = 0;
-            solveTax.put(problem, 20);
-            this.penalty = 0;
-        }
+        this.problemsSolved = 1;
+        this.penalty = penalty;
+        this.solvedSet.add(problem);
     }
+
+    // new incorrect entry
+    Contestant(int contestant, int problem) {
+        this.contestantId = contestant;
+        this.problemsSolved = 0;
+        solveTax.put(problem, 20);
+        this.penalty = 0;
+    }
+
 
     Contestant(int contestant) {
         this.contestantId = contestant;
@@ -63,47 +64,24 @@ class Contestant {
         this.penalty = 0;
     }
 
-
-    /*
-    @Override
-    public int compareTo(Contestant other){
-        // compareTo should return < 0 if this is supposed to be
-        // less than other, > 0 if this is supposed to be greater than
-        // other and 0 if they are supposed to be equal
-        if (this.problemsSolved > other.problemsSolved) {
-            return 1;
-        } else if (this.problemsSolved < other.problemsSolved) {
-            return -1;
-        } else {
-            if (this.penalty > other.problemsSolved) {
-                return -1;
-            } else if (this.penalty < other.penalty) {
-                return -1;
-            } else {
-                return 0;
-            }
-        }
-    }
-    */
-
     public void add_correct(int problem, int penalty) {
-       if(!solvedSet.contains(problem)) {
-          this.problemsSolved += 1;
-          this.penalty += penalty;
-          if (solveTax.containsKey(problem)) {
-            this.penalty += solveTax.get(problem);
-          }
-          this.solvedSet.add(problem);
-       }
+        if (!solvedSet.contains(problem)) {
+            this.problemsSolved += 1;
+            this.penalty += penalty;
+            if (solveTax.containsKey(problem)) {
+                this.penalty += solveTax.get(problem);
+            }
+            this.solvedSet.add(problem);
+        }
     }
 
     public void add_incorrect(int problem, int penalty) {
         // if we haven't solved problem
-        if(!solvedSet.contains(problem)) {
+        if (!solvedSet.contains(problem)) {
             // if we no entry for this problem add an entry
             if (!solveTax.containsKey(problem)) {
                 solveTax.put(problem, 20);
-           // if we have an entry increment entry
+                // if we have an entry increment entry
             } else {
                 int updatePenalty = solveTax.get(problem);
                 solveTax.put(problem, updatePenalty + 20);
@@ -112,9 +90,9 @@ class Contestant {
     }
 
     public void display() {
-        System.out.println( Integer.toString(contestantId) + " " +
-                            Integer.toString(problemsSolved) + " " +
-                            Integer.toString(penalty));
+        System.out.println(Integer.toString(contestantId) + " " +
+                Integer.toString(problemsSolved) + " " +
+                Integer.toString(penalty));
     }
 }
 
@@ -129,7 +107,7 @@ class UVa10258 {
 
     public void run() {
         //Scanner scan = readFile(fileName);
-        Scanner scan =read();
+        Scanner scan = read();
 
         int num = Integer.parseInt(scan.nextLine()); // number of sets
         String blank = scan.nextLine(); // blank line
@@ -150,7 +128,6 @@ class UVa10258 {
                     incorrect(contestant, problem, penalty);
                 } else {
                     neither(contestant, problem, penalty);
-
                 }
             } else {
                 compute();
@@ -159,30 +136,23 @@ class UVa10258 {
             }
         } // end of while
         compute();
-        //System.out.println("");
-
     } // end of run
 
     private void correct(int contestant, int problem, int penalty) {
-       // System.out.println(Integer.toString(contestant));
+        // System.out.println(Integer.toString(contestant));
         // contestant is not known
         if (scoreBoard.get(contestant) == null) {
-            scoreBoard.set(contestant, new Contestant(contestant, problem, penalty, true));
-        // contestant is known
+            scoreBoard.set(contestant, new Contestant(contestant, problem, penalty));
+            // contestant is known
         } else {
             scoreBoard.get(contestant).add_correct(problem, penalty);
         }
     }
 
-    /* possible problem here where we might have a bunch of incorrect solutions and
-    no correct solutions. this would count for a problem solved when it really shouldn't
-    i'll hack this and make it so if 20 then or some rare number is choosen then we
-    know it is an incomplete
-     */
     private void incorrect(int contestant, int problem, int penalty) {
         // contestant is not known
         if (scoreBoard.get(contestant) == null) {
-            scoreBoard.set(contestant, new Contestant(contestant, problem, penalty, false));
+            scoreBoard.set(contestant, new Contestant(contestant, problem ));
             // contestant is known
         } else {
             scoreBoard.get(contestant).add_incorrect(problem, penalty);
@@ -191,13 +161,12 @@ class UVa10258 {
 
     private void neither(int contestant, int problem, int penalty) {
         // contestant is not known
-       if (scoreBoard.get(contestant) == null) {
-           scoreBoard.set(contestant, new Contestant(contestant));
+        if (scoreBoard.get(contestant) == null) {
+            scoreBoard.set(contestant, new Contestant(contestant));
         }
     }
 
     private void compute() {
-        //Collections.sort(scoreBoard);
         Collections.sort(scoreBoard, new Comparator<Contestant>() {
             @Override
             public int compare(Contestant o1, Contestant o2) {
@@ -229,9 +198,9 @@ class UVa10258 {
             }
         });
 
-        for(int c = 0; c < scoreBoard.size(); c++) {
-            if(scoreBoard.get(c) != null) {
-               scoreBoard.get(c).display();
+        for (int c = 0; c < scoreBoard.size(); c++) {
+            if (scoreBoard.get(c) != null) {
+                scoreBoard.get(c).display();
             }
         }
 
