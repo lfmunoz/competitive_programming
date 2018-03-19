@@ -21,7 +21,7 @@ default:
 	@echo " 10107 What is the Median - [Done]"
 	@echo " 10258 Contest Scoreboard - [Done]"
 	@echo "---- Bit Manipulation ##"
-	@echo " 11926 Multitasking"
+	@echo " 11926 Multitasking - [Done]"
 	@echo " 11933 Splitting Numbers"
 	@echo "---- Java LinkedList ----"
 	@echo " 11988 Broken Keyboard"
@@ -107,4 +107,11 @@ default:
 	@echo "Runnning UVA11926"
 	javac $(SRC)/UVa11926.java -d $(TARGET)
 	java -cp $(TARGET) uva11926.Main < $(RSRC)/uva11926_in.txt | diff -s -y $(RSRC)/uva11926_out.txt -
+
+#######################################################
+11933:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11933"
+	javac $(SRC)/UVa11933.java -d $(TARGET)
+	java -cp $(TARGET) uva11933.Main < $(RSRC)/uva11933_in.txt | diff -s -y $(RSRC)/uva11933_out.txt -
 
