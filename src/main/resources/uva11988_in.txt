@@ -2,4 +2,7 @@ basecase
 ba[]secase
 This_is_a_[Beiju]_text
 [[]][][]Happy_Birthday_to_Tsinghua_University
-[a][b]c[]d[[[e]]]
+asd[fgh[jkl
+asd[fgh[jkl[
+[[a[[d[f[[g[g[h[h[dgd[fgsfa[f
+asd[gfh[[dfh]hgh]fdfhd[dfg[d]g[d]dg

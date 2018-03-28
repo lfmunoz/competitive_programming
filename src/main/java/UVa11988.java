@@ -14,17 +14,12 @@ package uva11988;
 // Copy-paste from here...
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
-import java.util.Stack;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 class Main {
     public static void main(String[] args) throws Exception {
@@ -44,57 +39,31 @@ class UVa11988 {
         Scanner scan =read();
 
 
+        //scan.useDelimiter("");
+        //scan.next();
+
+
         while (scan.hasNext()) {
-            String text = scan.nextLine();
-            LinkedList charList = text.chars().mapToObj(c -> (char) c)
-                    .collect(Collectors.toCollection(LinkedList::new));
-
-            //String output = Stream.of(charList).map(e -> e.toString()).collect(Collectors.joining("x "));
-
-            //System.out.printf("%s%n", charList.toString());
-            //System.out.printf("%s%n", output);
-            //System.out.println(output);
-            printList(compute(charList));
-
+            compute(scan.nextLine().toCharArray());
         }
+        
     }
 
-    private LinkedList<Character> compute(LinkedList<Character> linkedList) {
-        // add(E e) - Appends the specified element to the end of this list.
-        // addFirst(E e) - Inserts the specified element at the beginning of this list.
-        // addLast(E e) - Appends the specified element to the end of this list.
+    private void compute(char[] chars) {
         LinkedList<Character> result = new LinkedList();
-        ListIterator<Character> iter = linkedList.listIterator();
-        while (iter.hasNext()) {
-            Character regularChar = iter.next();
+        ListIterator<Character> iter = result.listIterator(0);
+        for (Character regularChar : chars) {
             if (regularChar.equals('[')) {
-                append_beiju(linkedList, result, iter);
-            } else {
-                result.add(regularChar);
+                iter = result.listIterator(0);
+                continue;
+            } else if (regularChar.equals(']')) {
+                iter = result.listIterator(result.size());
+                continue;
             }
+            iter.add(regularChar);
         }
-        return result;
+        printList(result);
     }
-
-    private void append_beiju(LinkedList<Character> linkedList,
-                              LinkedList<Character> result, ListIterator<Character> iter) {
-
-        //List<Character> arr = new ArrayList();
-        Stack<Character> stack = new Stack();
-        Character regularChar = iter.next();
-        while (regularChar != ']') {
-            if (regularChar.equals('[')) {
-                append_beiju(linkedList, result, iter);
-            } else {
-                stack.add(regularChar);
-            }
-            regularChar = iter.next();
-        }
-        while(!stack.empty()) {
-            result.addFirst(stack.pop());
-        }
-    }
-
 
     private void printList(LinkedList<Character> linkedList) {
 
@@ -122,5 +91,7 @@ class UVa11988 {
             return null;
         }
     }
+
+
 
 }
