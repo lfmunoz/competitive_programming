@@ -39,14 +39,37 @@ class UVa11988 {
         Scanner scan =read();
 
 
-        //scan.useDelimiter("");
-        //scan.next();
+
+        LinkedList<Character> result = new LinkedList();
+        ListIterator<Character> iter = result.listIterator(0);
+       scan.useDelimiter("");
+       while(scan.hasNext()) {
+           Character c =  scan.next().charAt(0);
+           if (c.equals('[')) {
+               iter = result.listIterator(0);
+               continue;
+           } else if (c.equals(']')) {
+               iter = result.listIterator(result.size());
+               continue;
+           }
+
+           if(c.equals('\n')) {
+               printList(result);
+               result = new LinkedList();
+               iter = result.listIterator(0);
+               continue;
+           }
+
+           iter.add(c);
+       }
 
 
+       /*
         while (scan.hasNext()) {
             compute(scan.nextLine().toCharArray());
         }
-        
+        */
+
     }
 
     private void compute(char[] chars) {
