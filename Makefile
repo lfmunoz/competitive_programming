@@ -22,9 +22,9 @@ default:
 	@echo " 10258 Contest Scoreboard - [Done]"
 	@echo "---- Bit Manipulation ##"
 	@echo " 11926 Multitasking - [Done]"
-	@echo " 11933 Splitting Numbers [Done]"
+	@echo " 11933 Splitting Numbers - [Done]"
 	@echo "---- Java LinkedList ----"
-	@echo " 11988 Broken Keyboard"
+	@echo " 11988 Broken Keyboard - [Done]"
 	@echo "---- Java Stack ### "
 	@echo " 00514 Rails"
 	@echo " 00732 Anagram by Stack"
@@ -121,4 +121,11 @@ default:
 	@echo "Runnning UVA11988"
 	javac $(SRC)/UVa11988.java -d $(TARGET)
 	java -cp $(TARGET) uva11988.Main < $(RSRC)/uva11988_in.txt | diff -s -y $(RSRC)/uva11988_out.txt -
+
+#######################################################
+00514:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00514"
+	javac $(SRC)/UVa00514.java -d $(TARGET)
+	java -cp $(TARGET) uva00514.Main < $(RSRC)/uva00514_in.txt | diff -s -y $(RSRC)/uva00514_out.txt -
 
