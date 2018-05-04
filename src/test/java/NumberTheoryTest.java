@@ -1,4 +1,6 @@
 
+import java.util.List;
+
 import org.junit.Test;
 
 // http://joel-costigliola.github.io/assertj/assertj-core-quick-start.html
@@ -67,5 +69,16 @@ public class NumberTheoryTest {
         System.out.printf("fibonacci() duration (nanoseconds): %d \n", duration);
 
     }
+
+    @Test
+    public void permutations_test() {
+        //List<String> result = NumberTheory.permutations("ab");
+        assertThat(NumberTheory.permutations("abc")).hasSize(6);
+        assertThat(NumberTheory.permutations("abcd")).hasSize(24);
+        assertThat(NumberTheory.permutations("abcde")).hasSize(120);
+
+    }
+
+
 
 }

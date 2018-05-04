@@ -26,7 +26,7 @@ default:
 	@echo "---- Java LinkedList ----"
 	@echo " 11988 Broken Keyboard - [Done]"
 	@echo "---- Java Stack ### "
-	@echo " 00514 Rails"
+	@echo " 00514 Rails - [Done]"
 	@echo " 00732 Anagram by Stack"
 	@echo "---- Java Queue and Deque ----"
 	@echo " 10172 The Lonesome Cargo"
@@ -128,4 +128,11 @@ default:
 	@echo "Runnning UVA00514"
 	javac $(SRC)/UVa00514.java -d $(TARGET)
 	java -cp $(TARGET) uva00514.Main < $(RSRC)/uva00514_in.txt | diff -s -y $(RSRC)/uva00514_out.txt -
+
+#######################################################
+00732:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00732"
+	javac $(SRC)/UVa00732.java -d $(TARGET)
+	java -cp $(TARGET) uva00732.Main < $(RSRC)/uva00732_in.txt | diff -s -y $(RSRC)/uva00732_out.txt -
 
