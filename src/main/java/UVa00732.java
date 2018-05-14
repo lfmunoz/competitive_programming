@@ -14,11 +14,7 @@ package uva00732;
 // Copy-paste from here...
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Stack;
 
 class Main {
     public static void main(String[] args) throws Exception {
@@ -33,90 +29,38 @@ class UVa00732 {
 
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva00732_in.txt";
 
-
-    class Tuple {
-        public Stack<Character> stack = new Stack<Character>();
-        public List<Character> result = new ArrayList<Character>();
-        public String destination;
-        public String source;
-
-        Tuple(String src, String dst) {
-            this.destination = dst;
-            this.source = src ;
-        }
-    }
-
+    String src;
+    String dst;
     public void run() {
-        //Scanner scan =readFile(fileName);
+        //Scanner scan = readFile(fileName);
         Scanner scan =read();
 
         while (scan.hasNext()) {
-            String src = scan.nextLine();
-            String dst = scan.nextLine();
+            src = scan.nextLine();
+            dst = scan.nextLine();
 
             System.out.printf("%c\n", '[');
-            compute(src.toCharArray(), dst.toCharArray());
+            dfs(src, "", "", "", 0);
             System.out.printf("%c\n", ']');
-
-            //System.out.printf("%s \n %s \n", src, dst);
         }
     }
 
-    private void compute(char[] src, char[] dst) {
-        Stack<Character> stack = new Stack<Character>();
-        stack.push(src[0]);
-        List<Character> result = new ArrayList<Character>();
-        result.add('i');
-        permutations(stack, result, Arrays.copyOfRange(src, 1, src.length), dst);
-    }
-
-    ////////////////////////////////////////////////////////////////////
-    // Helper Functions
-    ////////////////////////////////////////////////////////////////////
-    public static void permutations(Stack<Character> stack , List<Character> result, char[] src, char[] dst) {
-        // we've match all characters, so print solution
-        if (dst.length == 0) {
-            printArray(result);
+    private void dfs(String a, String b, String stack, String path, int n) {
+        if(n == src.length() * 2) {
+            if(b.equals(dst)) {
+                System.out.println(path);
+            }
             return;
         }
-        // check if we can simply push the next value (greedy push)
-        if (src.length != 0) {
-            Stack<Character> stackCopy = (Stack<Character>)stack.clone();
-            stackCopy.push(src[0]);
-            List<Character> resultCopy = new ArrayList<Character>(result);
-            resultCopy.add('i');
-            permutations(stackCopy, resultCopy, Arrays.copyOfRange(src, 1, src.length), dst);
+
+        // push
+        if(a.length() > 0) {
+            dfs(a.substring(1), b, stack + a.charAt(0), path + (n == 0 ? "i" : " i"), n + 1);
         }
-
-        // check if the top stack value matches
-        if (!stack.isEmpty() && stack.peek().equals(dst[0])) {
-            Stack<Character> stackCopy = (Stack<Character>)stack.clone();
-            stackCopy.pop();
-            List<Character> resultCopy = new ArrayList<Character>(result);
-            resultCopy.add('o');
-            permutations(stackCopy, resultCopy, src, Arrays.copyOfRange(dst, 1, dst.length));
+        // pop
+        if(stack.length() > 0 && stack.charAt(stack.length()-1) == dst.charAt(b.length())) {
+            dfs(a, b + stack.charAt(stack.length()-1), stack.substring(0, stack.length()-1), path + " o", n + 1);
         }
-
-
-    }
-
-    public static void printArray(List<Character> arr) {
-        for(int x = 0; x < arr.size(); x++) {
-            if(x == arr.size() -1) {
-                System.out.printf("%c\n", arr.get(x));
-            } else {
-                System.out.printf("%c ", arr.get(x));
-            }
-        }
-        //System.out.printf("\n");
-    }
-
-    public static String swap(String str, int x, int  y) {
-        char[] c = str.toCharArray();
-        char tmp = c[x];
-        c[x] = c[y];
-        c[y] = tmp;
-        return new String(c);
     }
 
     ////////////////////////////////////////////////////////////////////

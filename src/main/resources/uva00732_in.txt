@@ -1,4 +1,12 @@
 ab
+ba
+d_g
+g_d
+f
+f
+aaaabbb
+ababaab
+ab
 ac
 madam
 adamm
@@ -12,5 +20,7 @@ a
 a
 a
 b
-ab
-ba
+abcdefghijklmnopqrstuvwxyz
+zyxwvutsrqponmlkjihgfedcba
+1234567890
+0987654321
