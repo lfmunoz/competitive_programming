@@ -40,7 +40,9 @@ class UVa00732 {
             dst = scan.nextLine();
 
             System.out.printf("%c\n", '[');
-            dfs(src, "", "", "", 0);
+            if ( src.length() == dst.length()) {
+                dfs(src, "", "", "", 0);
+            }
             System.out.printf("%c\n", ']');
         }
     }
@@ -62,6 +64,7 @@ class UVa00732 {
             dfs(a, b + stack.charAt(stack.length()-1), stack.substring(0, stack.length()-1), path + " o", n + 1);
         }
     }
+
 
     ////////////////////////////////////////////////////////////////////
     // Input/Output Specific Functions
