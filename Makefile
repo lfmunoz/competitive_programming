@@ -29,8 +29,8 @@ default:
 	@echo " 00514 Rails - [Done]"
 	@echo " 00732 Anagram by Stack [Done w/ TLE]"
 	@echo "---- Java Queue and Deque ----"
-	@echo " 10172 The Lonesome Cargo"
-	@echo " 10901 Ferry Loading III"
+	@echo " 10172 The Lonesome Cargo [Skipped]"
+	@echo " 10901 Ferry Loading III [Done]"
 	@echo " 11034 Ferry Loading IV"
 	@echo "---- Java TreeMap ----"
 	@echo "---- Java TreeSet ----"
@@ -149,4 +149,11 @@ default:
 	@echo "Runnning UVA10901"
 	javac $(SRC)/UVa10901.java -d $(TARGET)
 	java -cp $(TARGET) uva10901.Main < $(RSRC)/uva10901_in.txt | diff -s -y $(RSRC)/uva10901_out.txt -
+
+#######################################################
+11034:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11034"
+	javac $(SRC)/UVa11034.java -d $(TARGET)
+	java -cp $(TARGET) uva11034.Main < $(RSRC)/uva11034_in.txt | diff -s -y $(RSRC)/uva11034_out.txt -
 
