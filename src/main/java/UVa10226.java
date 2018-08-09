@@ -12,8 +12,10 @@ Runtime
 package uva10226;
 
 // Copy-paste from here...
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -34,43 +36,37 @@ class UVa10226 {
     // TreeMap is implemented on the principles of red-black trees;
     // search, get, put and remove take logarithmic time O(log n)
 
-    public void run() {
-        //Scanner scan =readFile(fileName);
-        Scanner scan =read();
+    public void run() throws Exception {
+            //Scanner scan =readFile(fileName);
+            //Scanner scan =read();
+            BufferedReader scan = readwithBuffer();
 
-            Integer problems = Integer.parseInt(scan.nextLine());
-            scan.nextLine(); // blank line
+            Integer problems = Integer.parseInt(scan.readLine());
+            scan.readLine(); // blank line
             for(int pIndx = 0; pIndx < problems; pIndx++) {
                 TreeMap<String, Integer> treeMap = new TreeMap<>();
                 Integer total = 0;
-                while(scan.hasNext()) {
-                    String tree = scan.nextLine();
+                String tree;
+                while ((tree = scan.readLine()) != null) {
                     if(tree.isEmpty()) {
                         break;
                     }
-                    compute(treeMap, tree);
+
+                    if(treeMap.containsKey(tree)) {
+                        treeMap.put(tree, treeMap.get(tree)+1);
+                    } else {
+                        treeMap.put(tree, 1);
+                    }
+
                     total += 1;
                 }
-                result(treeMap, total);
+                for(Map.Entry<String, Integer> result : treeMap.entrySet()) {
+                    System.out.printf("%s %.4f%n", result.getKey(), result.getValue() * 100.0 / total);
+                }
                 if (pIndx != problems-1) System.out.println();
             }
     }
 
-    private void compute(TreeMap<String, Integer> treeMap, String tree) {
-        if(treeMap.containsKey(tree)) {
-            int currentVal = treeMap.get(tree);
-            treeMap.put(tree, currentVal+1);
-        } else {
-            treeMap.put(tree, 1);
-        }
-
-    }
-    private void result(TreeMap<String, Integer> treeMap, Integer total) {
-        for(Map.Entry<String, Integer> result : treeMap.entrySet()) {
-            System.out.printf("%s %.4f%n", result.getKey(), Double.valueOf(100 * result.getValue()) / Double.valueOf(total));
-        }
-
-    }
 
     ////////////////////////////////////////////////////////////////////
     // Input/Output Specific Functions
@@ -78,6 +74,18 @@ class UVa10226 {
     public Scanner read() {
         Scanner scan = new Scanner(System.in);
         return scan;
+    }
+
+    /*
+        br.readLine()
+         while ((s = br.readLine()) != null) {
+                         if (s.equals("")) {
+                    break;
+                }
+     */
+    public BufferedReader readwithBuffer() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        return br;
     }
 
     public static Scanner readFile(String fileName) {
