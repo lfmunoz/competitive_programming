@@ -8,7 +8,9 @@ Build
 
     $ rebar3 compile
 
-
+ while (scan.hasNext()) {
+ 
+ 
 int a = scn.nextInt();
 String b = scn.nextLine();
 scan.hasNext()

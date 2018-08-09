@@ -34,8 +34,8 @@ class UVa11034 {
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva11034_in.txt";
 
     public void run() {
-        Scanner scan =readFile(fileName);
-        //Scanner scan = read();
+        //Scanner scan =readFile(fileName);
+        Scanner scan = read();
 
         Integer set = Integer.parseInt(scan.nextLine());
         for (int problem = 0; problem < set; problem++) {
