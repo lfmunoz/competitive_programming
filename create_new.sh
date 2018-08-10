@@ -28,6 +28,8 @@ Runtime
 package uva$NAME;
 
 // Copy-paste from here...
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -92,6 +94,11 @@ class UVa$NAME {
     public Scanner read() {
         Scanner scan = new Scanner(System.in);
         return scan;
+    }
+
+    public BufferedReader readwithBuffer() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        return br;
     }
 
     public static Scanner readFile(String fileName) {

@@ -34,8 +34,8 @@ default:
 	@echo " 11034 Ferry Loading IV - [Done]"
 	@echo " "
 	@echo "---- Java TreeMap ----"
-	@echo " 10226 - Hardwood Species"
-	@echo " 10226 - Conformity"
+	@echo " 10226 - Hardwood Species - [Done]"
+	@echo " 11286 - Conformity"
 	@echo "---- Java TreeSet ----"
 	@echo " 00978 - Lemmings Battle (use multiset)"
 	@echo " 11136 - Hoax or what (use multiset)"
@@ -176,4 +176,11 @@ default:
 	@echo "Runnning UVA10226"
 	javac $(SRC)/UVa10226.java -d $(TARGET)
 	java -cp $(TARGET) uva10226.Main < $(RSRC)/uva10226_in.txt | diff -s -y $(RSRC)/uva10226_out.txt -
+
+#######################################################
+11286:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11286"
+	javac $(SRC)/UVa11286.java -d $(TARGET)
+	java -cp $(TARGET) uva11286.Main < $(RSRC)/uva11286_in.txt | diff -s -y $(RSRC)/uva11286_out.txt -
 
