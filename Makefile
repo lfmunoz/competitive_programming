@@ -35,7 +35,7 @@ default:
 	@echo " "
 	@echo "---- Java TreeMap ----"
 	@echo " 10226 - Hardwood Species - [Done]"
-	@echo " 11286 - Conformity"
+	@echo " 11286 - Conformity - [Done]"
 	@echo "---- Java TreeSet ----"
 	@echo " 00978 - Lemmings Battle (use multiset)"
 	@echo " 11136 - Hoax or what (use multiset)"
@@ -183,4 +183,11 @@ default:
 	@echo "Runnning UVA11286"
 	javac $(SRC)/UVa11286.java -d $(TARGET)
 	java -cp $(TARGET) uva11286.Main < $(RSRC)/uva11286_in.txt | diff -s -y $(RSRC)/uva11286_out.txt -
+
+#######################################################
+00978:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00978"
+	javac $(SRC)/UVa00978.java -d $(TARGET)
+	java -cp $(TARGET) uva00978.Main < $(RSRC)/uva00978_in.txt | diff -s -y $(RSRC)/uva00978_out.txt -
 
