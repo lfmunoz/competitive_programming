@@ -79,9 +79,9 @@ class UVa00978 {
         while(greenQ.size() != 0 ||  blueQ.size() != 0) {
             if(!greenQ.isEmpty() && !blueQ.isEmpty()) {
                 int result = greenQ.poll() - blueQ.poll();
-                if(result > 0) {
+                if (result > 0) {
                     greenQ.add(result);
-                } else if(result < 0) {
+                } else if (result < 0) {
                     blueQ.add(Math.abs(result));
                 }
             } else if(!greenQ.isEmpty()) {
