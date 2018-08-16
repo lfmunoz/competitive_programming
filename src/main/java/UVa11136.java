@@ -6,7 +6,9 @@ https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=1
 https://www.udebug.com/UVa/11136
 
 Runtime 
+https://github.com/izharishaksa/UVa-Solution/blob/master/src/datastructures/builtin/Problem11136YES.java
 
+https://github.com/PuzzlesLab/UVA/blob/master/King/11136%20Hoax%20or%20What.java
 */
 
 package uva11136;
@@ -34,22 +36,23 @@ class UVa11136 {
 
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva11136_in.txt";
 
-    public void run() {
+    public void run() throws Exception {
         //Scanner scan =readFile(fileName);
-        Scanner scan =read();
+        //Scanner scan =read();
+        BufferedReader scan =readwithBuffer();
 
         while (true) {
-            int days = Integer.parseInt(scan.nextLine());
+            int days = Integer.parseInt(scan.readLine());
             if(days == 0) {
                 break;
             }
 
             TreeMap<Integer, Integer> billSortedMap = new TreeMap<>();
-            int payout = 0;
+            long payout = 0;
             int largest = 0;
             int smallest = 0;
             for(int day = 0; day < days; day++) {
-                String bills = scan.nextLine();
+                String bills = scan.readLine();
                 String[] billsList = bills.split(" ");
                 int total = Integer.parseInt(billsList[0]);
                 for(int idx = 1; idx < total + 1; idx++) {
@@ -82,9 +85,7 @@ class UVa11136 {
         }
     }
 
-    private void compute(){
 
-    }
 
     ////////////////////////////////////////////////////////////////////
     // Input/Output Specific Functions
