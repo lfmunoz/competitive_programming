@@ -38,7 +38,7 @@ default:
 	@echo " 11286 - Conformity - [Done]"
 	@echo "---- Java TreeSet ----"
 	@echo " 00978 - Lemmings Battle (use multiset) - [DONE]"
-	@echo " 11136 - Hoax or what (use multiset)"
+	@echo " 11136 - Hoax or what (use multiset) - [DONE]"
 	@echo " 11849 - CD (set or hashing)"
 	@echo "---- Java PriorityQueue ----"
 	@echo " 01203 - Argus "
@@ -197,4 +197,11 @@ default:
 	@echo "Runnning UVA11136"
 	javac $(SRC)/UVa11136.java -d $(TARGET)
 	java -cp $(TARGET) uva11136.Main < $(RSRC)/uva11136_in.txt | diff -s -y $(RSRC)/uva11136_out.txt -
+
+#######################################################
+11849:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11849"
+	javac $(SRC)/UVa11849.java -d $(TARGET)
+	java -cp $(TARGET) uva11849.Main < $(RSRC)/uva11849_in.txt | diff -s -y $(RSRC)/uva11849_out.txt -
 
