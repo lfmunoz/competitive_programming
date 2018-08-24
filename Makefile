@@ -41,7 +41,7 @@ default:
 	@echo " 11136 - Hoax or what (use multiset) - [DONE]"
 	@echo " 11849 - CD (set or hashing) -[DONE]"
 	@echo "---- Java PriorityQueue ----"
-	@echo " 01203 - Argus "
+	@echo " 01203 - Argus - [DONE]"
 	@echo " 10954 - Add all"
 	@echo " 11995 - I can Guess..."
 	@echo " "
@@ -211,4 +211,11 @@ default:
 	@echo "Runnning UVA01203"
 	javac $(SRC)/UVa01203.java -d $(TARGET)
 	java -cp $(TARGET) uva01203.Main < $(RSRC)/uva01203_in.txt | diff -s -y $(RSRC)/uva01203_out.txt -
+
+#######################################################
+10954:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10954"
+	javac $(SRC)/UVa10954.java -d $(TARGET)
+	java -cp $(TARGET) uva10954.Main < $(RSRC)/uva10954_in.txt | diff -s -y $(RSRC)/uva10954_out.txt -
 

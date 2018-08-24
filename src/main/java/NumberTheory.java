@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,4 +78,33 @@ public class NumberTheory {
         c[y] = tmp;
         return new String(c);
     }
+
+
+    /**
+     *  Generate permutations given a list of Integers
+     * @param result
+     * @param input
+     * @param left
+     * @param right
+     */
+    public void permutations(List<List<Integer>> result, List<Integer> input, int left, int right) {
+        if(left == right) {
+            result.add(input);
+        } else {
+            for(int idx = left; idx <= right; idx++) {
+                List<Integer> temp = swap(input, left, idx);
+                permutations(result, temp, left+1, right);
+            }
+
+        }
+    }
+
+    public List<Integer> swap(List<Integer> c, int x, int  y) {
+        List<Integer> temp  = new ArrayList<>(c);
+        Collections.swap(temp, x, y);
+        return temp;
+    }
+
+
+
 }
