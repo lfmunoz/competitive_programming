@@ -42,7 +42,7 @@ default:
 	@echo " 11849 - CD (set or hashing) -[DONE]"
 	@echo "---- Java PriorityQueue ----"
 	@echo " 01203 - Argus - [DONE]"
-	@echo " 10954 - Add all"
+	@echo " 10954 - Add all - [DONE]"
 	@echo " 11995 - I can Guess..."
 	@echo " "
 	@echo "---- Graph Data Structures ----"
@@ -50,8 +50,12 @@ default:
 	@echo " 10895 - Matrix Tranpose"
 	@echo " 11991 - Easy Problem from..."
 	@echo "---- Union-Find Disjint Sets ----"
+	@echo " 00793 - Network Connections*"
+	@echo " 10507 - Waking up brain*"
+	@echo " 11503 - Virtual Friends*"
 	@echo "---- Tree-related Data Structures ----"
-	@echo "---- Tree-related Data Structures ----"
+	@echo " 11235 - Frequent Values*"
+	@echo " 11402 - Ahoy, Pirates"
 	@echo " "
 	@echo "---- Iterative (One Loop, Linear Scan) ----"
 	@echo "---- Iterative (Two Nested Loops) ----"
@@ -218,4 +222,11 @@ default:
 	@echo "Runnning UVA10954"
 	javac $(SRC)/UVa10954.java -d $(TARGET)
 	java -cp $(TARGET) uva10954.Main < $(RSRC)/uva10954_in.txt | diff -s -y $(RSRC)/uva10954_out.txt -
+
+#######################################################
+11995:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11995"
+	javac $(SRC)/UVa11995.java -d $(TARGET)
+	java -cp $(TARGET) uva11995.Main < $(RSRC)/uva11995_in.txt | diff -s -y $(RSRC)/uva11995_out.txt -
 
