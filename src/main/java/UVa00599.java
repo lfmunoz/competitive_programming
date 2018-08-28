@@ -21,6 +21,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 class Main {
@@ -31,6 +33,12 @@ class Main {
     }
 }
 
+
+class CC {
+    List<String> v = new ArrayList<>(26);
+    List<Boolean> visisted = new ArrayList<>(26);
+    List<Integer> cc = new ArrayList<>(26);
+}
 
 class UVa00599 {
 
