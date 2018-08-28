@@ -43,7 +43,7 @@ default:
 	@echo "---- Java PriorityQueue ----"
 	@echo " 01203 - Argus - [DONE]"
 	@echo " 10954 - Add all - [DONE]"
-	@echo " 11995 - I can Guess..."
+	@echo " 11995 - I can Guess...[RTE]"
 	@echo " "
 	@echo "---- Graph Data Structures ----"
 	@echo " 00599 - The Forrest for the Trees"
@@ -229,4 +229,11 @@ default:
 	@echo "Runnning UVA11995"
 	javac $(SRC)/UVa11995.java -d $(TARGET)
 	java -cp $(TARGET) uva11995.Main < $(RSRC)/uva11995_in.txt | diff -s -y $(RSRC)/uva11995_out.txt -
+
+#######################################################
+00599:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00599"
+	javac (SRC)/UVa00599.java -d (TARGET)
+	java -cp (TARGET) uva00599.Main < (RSRC)/uva00599_in.txt | diff -s -y (RSRC)/uva00599_out.txt -
 
