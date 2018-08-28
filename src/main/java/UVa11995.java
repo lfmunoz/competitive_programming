@@ -25,7 +25,6 @@ import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Scanner;
 
 class Main {
@@ -41,12 +40,12 @@ class UVa11995 {
 
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva11995_in.txt";
 
-    public void run() {
+    public void run() throws Exception {
         //Scanner scan =readFile(fileName);
-        Scanner scan =read();
+        //Scanner scan =read();
+        BufferedReader scan = readwithBuffer();
 
-
-        Queue<Integer> q;
+        Deque<Integer> q;
         Deque<Integer> s;
         PriorityQueue<Integer> pQ;
 
@@ -54,8 +53,10 @@ class UVa11995 {
         boolean stack;
         boolean priorityQueue;
 
-        while (scan.hasNext()) {
-            int cases = scan.nextInt();
+        while (true) {
+            String line =  scan.readLine();
+            if (line == null) break;
+            int cases =  Integer.parseInt(line);
 
             q = new ArrayDeque(cases);
             s = new ArrayDeque<>(cases);
@@ -67,8 +68,10 @@ class UVa11995 {
 
             for(int idx = 0; idx < cases; idx++) {
 
-                final int operation = scan.nextInt();
-                final int value = scan.nextInt();
+                String inputLine = scan.readLine();
+                String[] inputLineList = inputLine.split(" ");
+                final int operation = Integer.parseInt(inputLineList[0]);
+                final int value = Integer.parseInt(inputLineList[1]);
                 //assume it is queue
                 if (operation == 1) {
                     q.add(value);
