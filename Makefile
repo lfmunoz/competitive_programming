@@ -234,6 +234,6 @@ default:
 00599:
 	--mkdir -p target/classes
 	@echo "Runnning UVA00599"
-	javac (SRC)/UVa00599.java -d (TARGET)
-	java -cp (TARGET) uva00599.Main < (RSRC)/uva00599_in.txt | diff -s -y (RSRC)/uva00599_out.txt -
+	javac $(SRC)/UVa00599.java -d $(TARGET)
+	java -cp $(TARGET) uva00599.Main < $(RSRC)/uva00599_in.txt | diff -s -y $(RSRC)/uva00599_out.txt -
 
