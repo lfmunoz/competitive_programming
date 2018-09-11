@@ -46,7 +46,7 @@ default:
 	@echo " 11995 - I can Guess...[RTE]"
 	@echo " "
 	@echo "---- Graph Data Structures ----"
-	@echo " 00599 - The Forrest for the Trees"
+	@echo " 00599 - The Forrest for the Trees [DONE]"
 	@echo " 10895 - Matrix Tranpose"
 	@echo " 11991 - Easy Problem from..."
 	@echo "---- Union-Find Disjint Sets ----"
@@ -236,4 +236,11 @@ default:
 	@echo "Runnning UVA00599"
 	javac $(SRC)/UVa00599.java -d $(TARGET)
 	java -cp $(TARGET) uva00599.Main < $(RSRC)/uva00599_in.txt | diff -s -y $(RSRC)/uva00599_out.txt -
+
+#######################################################
+10895:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10895"
+	javac $(SRC)/UVa10895.java -d $(TARGET)
+	java -cp $(TARGET) uva10895.Main < $(RSRC)/uva10895_in.txt | diff -s -y $(RSRC)/uva10895_out.txt -
 
