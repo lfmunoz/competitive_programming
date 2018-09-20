@@ -5,7 +5,9 @@ UVa11991 -
 https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=16&page=show_problem&problem=1796
 https://www.udebug.com/UVa/11991
 
-Runtime 
+
+Notice how the program becomes easier if you initialize the map with 100001 arrays initially
+you don't have to check if it exists. so no need for the else statements.
 
 */
 
@@ -35,17 +37,19 @@ class UVa11991 {
 
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva11991_in.txt";
 
-    public void run() {
+    public void run() throws Exception {
         //Scanner scan =readFile(fileName);
-        Scanner scan =read();
+        //Scanner scan =read();
+        BufferedReader scan =readwithBuffer();
 
-        while (scan.hasNext()) {
-            String dimensions = scan.nextLine();
+        while (true) {
+            String dimensions = scan.readLine();
+            if(dimensions == null) break;
             String[] nm = dimensions.split(" ");
             int n = Integer.parseInt(nm[0]); // number of elements in array
             int m = Integer.parseInt(nm[1]); // number of queries
 
-            String[] numArray = scan.nextLine().split(" ");
+            String[] numArray = scan.readLine().split(" ");
             Map<Integer, List<Integer>> adjList = new HashMap<>();
            for(int idx = 0; idx < numArray.length; idx++) {
                Integer number = Integer.parseInt(numArray[idx]);
@@ -60,7 +64,7 @@ class UVa11991 {
            }
 
             for(int line = 0; line < m; line++) {
-                String[] kv = scan.nextLine().split(" ");
+                String[] kv = scan.readLine().split(" ");
                 int k = Integer.parseInt(kv[0]); // position
                 int v = Integer.parseInt(kv[1]); // value
                 List<Integer> positionList = adjList.get(v);
