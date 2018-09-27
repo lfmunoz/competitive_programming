@@ -58,7 +58,7 @@ default:
 	@echo " 10895 - Matrix Tranpose [DONE]"
 	@echo " 11991 - Easy Problem from...[DONE]"
 	@echo "---- Union-Find Disjint Sets ----"
-	@echo " 00793 - Network Connections*"
+	@echo " 00793 - Network Connections* [DONE]"
 	@echo " 10507 - Waking up brain*"
 	@echo " 11503 - Virtual Friends*"
 	@echo "---- Tree-related Data Structures ----"
@@ -265,4 +265,11 @@ default:
 	@echo "Runnning UVA00793"
 	javac $(SRC)/UVa00793.java -d $(TARGET)
 	java -cp $(TARGET) uva00793.Main < $(RSRC)/uva00793_in.txt | diff -s -y $(RSRC)/uva00793_out.txt -
+
+#######################################################
+10507:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10507"
+	javac (SRC)/UVa10507.java -d (TARGET)
+	java -cp (TARGET) uva10507.Main < (RSRC)/uva10507_in.txt | diff -s -y (RSRC)/uva10507_out.txt -
 
