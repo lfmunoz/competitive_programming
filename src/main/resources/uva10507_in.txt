@@ -14,10 +14,6 @@ DF
 FH
 
 5
-0
-ABZ
-
-5
 6
 ABC
 AD
@@ -162,3 +158,7 @@ EA
 FD
 FC
 FA
+
+5
+0
+ABZ

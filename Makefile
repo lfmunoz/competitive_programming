@@ -270,6 +270,6 @@ default:
 10507:
 	--mkdir -p target/classes
 	@echo "Runnning UVA10507"
-	javac (SRC)/UVa10507.java -d (TARGET)
-	java -cp (TARGET) uva10507.Main < (RSRC)/uva10507_in.txt | diff -s -y (RSRC)/uva10507_out.txt -
+	javac $(SRC)/UVa10507.java -d $(TARGET)
+	java -cp $(TARGET) uva10507.Main < $(RSRC)/uva10507_in.txt | diff -s -y $(RSRC)/uva10507_out.txt -
 

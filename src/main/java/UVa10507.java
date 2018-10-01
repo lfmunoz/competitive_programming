@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -35,141 +36,92 @@ class Main {
     }
 }
 
-class UnionFind {
-    private int[] parent;  // parent[i] = parent of i
-    private int[] sz; // array to count number of objects in the tree rooted at i
-    private int count;     // number of components
-
-
-    public UnionFind(int n) {
-        parent = new int[n];
-        sz = new int[n];
-        count = n;
-        for (int i = 0; i < count; i++) {
-            parent[i] = i;
-            sz[i] = 1;
-        }
-    }
-
-
-    public int count() {
-        return count;
-    }
-
-
-    public int find(int p) {
-        while (p != parent[p]) {
-            parent[p] = parent[parent[p]];
-            p = parent[p];
-        }
-        return p;
-    }
-
-
-    public boolean connected(int p, int q) {
-        return find(p) == find(q);
-    }
-
-
-    public void union(int p, int q) {
-        int rootP = find(p);
-        int rootQ = find(q);
-        if (rootP == rootQ) return;
-        if(sz[rootP] < sz[rootQ]) {
-            parent[rootP] = rootQ;
-            sz[rootQ] += sz[rootP];
-        } else {
-            parent[rootQ] = rootP;
-            sz[rootP] += sz[rootQ];
-        }
-        count--;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("idx  parent  sz \n");
-        for(int i = 0; i < parent.length; i++) {
-            sb.append(String.valueOf(i) + "    " +
-                    String.valueOf(parent[i]) + "       " +
-                    String.valueOf(sz[i]) + "\n");
-        }
-        return sb.toString();
-    }
-}
 
 class UVa10507 {
 
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva10507_in.txt";
 
     public void run() {
-        Scanner scan = readFile(fileName);
-        //Scanner scan =read();
+        //Scanner scan = readFile(fileName);
+        Scanner scan =read();
 
         while (true) {
             Integer N = Integer.parseInt(scan.nextLine()); // number of slept areas
             Integer M = Integer.parseInt(scan.nextLine()); // connections
 
-            UnionFind uf = new UnionFind(26);
             String[] wakeUpAreas = scan.nextLine().split("");
 
-            Map<String, Integer> awake = new HashMap<>();
-            Map<String, Integer> asleep = new HashMap<>();
+            //Map<String, List<String>> awake = new HashMap<>();
 
-            awake.put(wakeUpAreas[0], stringToInt(wakeUpAreas[0]));
+            Set<String> awakeSet = new HashSet<>();
 
-            IntStream.range(0, wakeUpAreas.length-1).forEach( intVal -> {
-                awake.put(wakeUpAreas[intVal+1], stringToInt(wakeUpAreas[intVal+1]));
-                uf.union(stringToInt(wakeUpAreas[intVal]), stringToInt(wakeUpAreas[intVal+1]));
-              //  System.out.println(stringToInt(wakeUpAreas[intVal]) + " " + stringToInt(wakeUpAreas[intVal+1]));
+            Map<String, Set<String>> adjList = new HashMap<>();
+
+            Arrays.stream(wakeUpAreas).forEach(strVal -> {
+             //   Set<String> connected = new HashSet<>();
+             //   adjList.put(strVal, connected);
+                awakeSet.add(strVal);
+                //System.out.println(strVal);
             });
-
-
 
 
             for (int i = 0; i < M; i++) {
                 String[] connections = scan.nextLine().split("");
-                uf.union(stringToInt(connections[0]), stringToInt(connections[1]));
 
-                if(!awake.containsKey(connections[0])) {
-                    asleep.putIfAbsent(connections[0], stringToInt(connections[0]));
+                if(!adjList.containsKey(connections[1]) && !awakeSet.contains(connections[1])) {
+                    Set<String> connected = new HashSet<>();
+                    adjList.put(connections[1], connected);
+                }
+                if(!adjList.containsKey(connections[0]) && !awakeSet.contains(connections[0])) {
+                    Set<String> connected = new HashSet<>();
+                    adjList.put(connections[0], connected);
                 }
 
-                if(!awake.containsKey(connections[1])) {
-                    asleep.putIfAbsent(connections[1], stringToInt(connections[1]));
+                if(!awakeSet.contains(connections[0])) {
+                    adjList.get(connections[0]).add(connections[1]);
                 }
+                if(!awakeSet.contains(connections[1])) {
+                    adjList.get(connections[1]).add(connections[0]);
+                }
+
             }
 
-           // uf.finish();
-
-            boolean flag = true;
             int years = 0;
+            boolean goFlag = true;
+            while(goFlag) {
+                goFlag = false;
 
-            while(flag) {
-                flag = false;
+                Set<String> union = new HashSet<>();
+                List<Map.Entry<String, Set<String>>> entryList = new ArrayList(adjList.entrySet());
 
-                List<Map.Entry<String, Integer>> sleepSet =  new ArrayList(asleep.entrySet());
-                List<Map.Entry<String, Integer>> awakeSet = new ArrayList(awake.entrySet());
+                for (Map.Entry<String, Set<String>> entry : entryList) {
+                    String node = entry.getKey();
+                    Set<String> connArray = entry.getValue();
 
-                for (Map.Entry<String, Integer> sleepEntry : sleepSet) {
-                    int awakeConnCount = 0;
-                    int sleepId = sleepEntry.getValue();
-                    for (Map.Entry<String, Integer> awakeEntry : awakeSet) {
-                        int awakeId = awakeEntry.getValue();
-                        if (uf.connected(sleepId, awakeId)) {
-                            awakeConnCount++;
+                    int count = 0;
+                    for (String conn : connArray) {
+                        if (awakeSet.contains(conn)) {
+                            count++;
                         }
                     }
-                    if (awakeConnCount > 2) {
-                        awake.put(sleepEntry.getKey(), sleepEntry.getValue());
-                        asleep.remove(sleepEntry.getKey());
-                        flag = true;
+
+                    if (count > 2) {
+                        //awakeSet.add(node);
+                        adjList.remove(node);
+                        goFlag = true;
+                        union.add(node);
                     }
 
                 }
-                years++;
+                if(goFlag) {
+                    years++;
+                    awakeSet.addAll(union);
+                }
             }
 
-            if(asleep.size() == 0 && awake.size() == N) {
+
+
+            if(N == awakeSet.size()) {
                 System.out.println("WAKE UP IN, " + String.valueOf(years) + ", YEARS");
             } else {
                 System.out.println("THIS BRAIN NEVER WAKES UP");
@@ -180,6 +132,7 @@ class UVa10507 {
             } else {
                 break;
             }
+
 
 
         }
