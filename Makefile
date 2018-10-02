@@ -273,3 +273,10 @@ default:
 	javac $(SRC)/UVa10507.java -d $(TARGET)
 	java -cp $(TARGET) uva10507.Main < $(RSRC)/uva10507_in.txt | diff -s -y $(RSRC)/uva10507_out.txt -
 
+#######################################################
+11503:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11503"
+	javac $(SRC)/UVa11503.java -d $(TARGET)
+	java -cp $(TARGET) uva11503.Main < $(RSRC)/uva11503_in.txt | diff -s -y $(RSRC)/uva11503_out.txt -
+
