@@ -59,8 +59,8 @@ default:
 	@echo " 11991 - Easy Problem from...[DONE]"
 	@echo "---- Union-Find Disjint Sets ----"
 	@echo " 00793 - Network Connections* [DONE]"
-	@echo " 10507 - Waking up brain*"
-	@echo " 11503 - Virtual Friends*"
+	@echo " 10507 - Waking up brain* [DONE]"
+	@echo " 11503 - Virtual Friends* [DONE]"
 	@echo "---- Tree-related Data Structures ----"
 	@echo " 11235 - Frequent Values*"
 	@echo " 11402 - Ahoy, Pirates"
@@ -279,4 +279,11 @@ default:
 	@echo "Runnning UVA11503"
 	javac $(SRC)/UVa11503.java -d $(TARGET)
 	java -cp $(TARGET) uva11503.Main < $(RSRC)/uva11503_in.txt | diff -s -y $(RSRC)/uva11503_out.txt -
+
+#######################################################
+11235:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11235"
+	javac $(SRC)/UVa11235.java -d $(TARGET)
+	java -cp $(TARGET) uva11235.Main < $(RSRC)/uva11235_in.txt | diff -s -y $(RSRC)/uva11235_out.txt -
 

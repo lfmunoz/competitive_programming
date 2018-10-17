@@ -99,22 +99,17 @@ class UVa11503 {
 
             for(int conn = 0; conn < F; conn++) {
                 String[] friends = scan.nextLine().split(" ");
-                int friend0 = 0;
-                int friend1 = 0;
 
-                if(symbolTable.containsKey(friends[0])) {
-                   friend0 = symbolTable.get(friends[0]);
-                } else {
-                    friend0 = symbolCount++;
-                   symbolTable.put(friends[0], friend0);
+                if(!symbolTable.containsKey(friends[0])) {
+                    symbolTable.put(friends[0], symbolCount++);
+                }
+                if(!symbolTable.containsKey(friends[1])) {
+                    symbolTable.put(friends[1], symbolCount++);
                 }
 
-                if(symbolTable.containsKey(friends[1])) {
-                    friend1 = symbolTable.get(friends[1]);
-                } else {
-                    friend1 = symbolCount++;
-                    symbolTable.put(friends[1], friend1);
-                }
+                final int friend0 = symbolTable.get(friends[0]);
+                final int friend1 = symbolTable.get(friends[1]);
+
 
                 uf.union(friend0, friend1);
                 System.out.println(uf.size(friend0));
