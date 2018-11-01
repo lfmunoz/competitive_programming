@@ -46,23 +46,11 @@ public class SparseTableRangeMinimumQuery {
     }
 
 
-
-    private int[][] preProcess(int[] input, int n) {
-        int[][] sparse = new int[n][log2(n) +1 ];
-        for(int i = 0; i < n; i++) {
-            sparse[i][0] = i;
-        }
-        for(int j = 1; (1 << j) <= n; j++) {
-            for(int i = 0; i + (1 << j) - 1 < n; i++) {
-
-            }
-        }
-
-        return sparse;
-    }
-
     // low and high are zero indexed and inclusive
     public int rangeMinimumQuery(int low, int high) {
+        if(high >= n) throw new IllegalArgumentException("High index must be less than n = " + n);
+        if(low < 0) throw new IllegalArgumentException("Low index can't be less than 0");
+
         int l = high - low + 1;
         int k = log2(l);
         if (input[sparse[low][k]] <= input[sparse[low + l - (1<<k)][k]]) {
@@ -78,4 +66,26 @@ public class SparseTableRangeMinimumQuery {
     }
 
 
+    public String toString() {
+        //  if(! (sparse.length > 0)) return "empty";
+        StringBuilder sb = new StringBuilder();
+        for(int x = 0; x <  sparse.length; x++) {
+           // sb.append("Row: " + x + "\n");
+            for (int y = 0; y < sparse[x].length; y++) {
+                int num = sparse[x][y];
+                if(num == 0) {
+                    sb.append("X");
+                    sb.append(" ");
+                } else {
+                    sb.append(String.valueOf(num));
+                    sb.append(" ");
+                }
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+
 }
+
