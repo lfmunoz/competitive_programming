@@ -1,10 +1,20 @@
-erl_audio
+Competitive Programming
 =====
 
-An OTP application
+
 
 Build
 -----
+
+
+Binary Indexed(Fenwick) Tree
+Segment Tree
+
+
+
+Skipped SegmentTree
+UVa11402
+
 
     $ rebar3 compile
 

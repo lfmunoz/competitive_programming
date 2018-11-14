@@ -62,13 +62,31 @@ default:
 	@echo " 10507 - Waking up brain* [DONE]"
 	@echo " 11503 - Virtual Friends* [DONE]"
 	@echo "---- Tree-related Data Structures ----"
-	@echo " 11235 - Frequent Values*"
-	@echo " 11402 - Ahoy, Pirates"
+	@echo " 11235 - Frequent Values* (Sparse Table)[DONE] "
+	@echo " 11402 - Ahoy, Pirates (SegmentTree) [SKIP]"
 	@echo " "
+	@echo "---- Complete Search ----"
 	@echo "---- Iterative (One Loop, Linear Scan) ----"
+	@echo " 00927 - Integer Sequence From ... *"
+	@echo " 01237 - Expert Enough"
+	@echo " 10976 - Fractions Again?"
 	@echo "---- Iterative (Two Nested Loops) ----"
+	@echo " 01260 - Sales *"
+	@echo " 10487 - Closest Sums *"
+	@echo " 11242 - Tour de France *"
 	@echo "---- Iterative (Three or More Nested Loops, Easier) ----"
+	@echo " 00441 - Lotto *"
+	@echo " 00725 - Dart-a-Mania*"
+	@echo " 10102 - The Path in the ... *"
 	@echo "---- Iterative (Three-or-More Nested Loops, Harder) ----"
+	@echo " 10660 - Citizen attention ... *"
+	@echo " 11565 - Simple Equations *"
+	@echo "---- Fancy Techniques ----"
+	@echo " 11553 - Grid Game *"
+	@echo "---- Backtracking (Easy) ----"
+	@echo " 00624 - CD * "
+	@echo " 10576 - Y2K Accounting Bug"
+	@echo " 11085 - Back to the 8-Queens"
 
 ########################################################
 10038: 
@@ -286,4 +304,18 @@ default:
 	@echo "Runnning UVA11235"
 	javac $(SRC)/UVa11235.java -d $(TARGET)
 	java -cp $(TARGET) uva11235.Main < $(RSRC)/uva11235_in.txt | diff -s -y $(RSRC)/uva11235_out.txt -
+
+#######################################################
+11402:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11402"
+	javac $(SRC)/UVa11402.java -d $(TARGET)
+	java -cp $(TARGET) uva11402.Main < $(RSRC)/uva11402_in.txt | diff -s -y $(RSRC)/uva11402_out.txt -
+
+#######################################################
+00927:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00927"
+	javac $(SRC)/UVa00927.java -d $(TARGET)
+	java -cp $(TARGET) uva00927.Main < $(RSRC)/uva00927_in.txt | diff -s -y $(RSRC)/uva00927_out.txt -
 
