@@ -14,7 +14,7 @@ perf:
 	./gradlew jmh
 
 ########################################################
-.PHONY: default
+.PHONY: default count
 
 default:
 	@echo "---- 1D Array Manipulation ----"
@@ -67,7 +67,7 @@ default:
 	@echo " "
 	@echo "---- Complete Search ----"
 	@echo "---- Iterative (One Loop, Linear Scan) ----"
-	@echo " 00927 - Integer Sequence From ... *"
+	@echo " 00927 - Integer Sequence From ... [DONE]"
 	@echo " 01237 - Expert Enough"
 	@echo " 10976 - Fractions Again?"
 	@echo "---- Iterative (Two Nested Loops) ----"
@@ -87,6 +87,9 @@ default:
 	@echo " 00624 - CD * "
 	@echo " 10576 - Y2K Accounting Bug"
 	@echo " 11085 - Back to the 8-Queens"
+
+count:
+	ls -l src/main/resources/*_out.txt | wc -l
 
 ########################################################
 10038: 
@@ -318,4 +321,11 @@ default:
 	@echo "Runnning UVA00927"
 	javac $(SRC)/UVa00927.java -d $(TARGET)
 	java -cp $(TARGET) uva00927.Main < $(RSRC)/uva00927_in.txt | diff -s -y $(RSRC)/uva00927_out.txt -
+
+#######################################################
+01237:
+	--mkdir -p target/classes
+	@echo "Runnning UVA01237"
+	javac $(SRC)/UVa01237.java -d $(TARGET)
+	java -cp $(TARGET) uva01237.Main < $(RSRC)/uva01237_in.txt | diff -s -y $(RSRC)/uva01237_out.txt -
 

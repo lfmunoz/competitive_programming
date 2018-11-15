@@ -49,6 +49,7 @@ class UVa$NAME {
 
     public void run() {
         //Scanner scan =readFile(fileName);
+        //BufferedReader scan =readwithBuffer(); // use readLine()
         Scanner scan =read();
 
         while (true) {
