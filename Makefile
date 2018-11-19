@@ -69,7 +69,7 @@ default:
 	@echo "---- Iterative (One Loop, Linear Scan) ----"
 	@echo " 00927 - Integer Sequence From ... [DONE]"
 	@echo " 01237 - Expert Enough - [DONE]"
-	@echo " 10976 - Fractions Again?"
+	@echo " 10976 - Fractions Again? -[ DONE]"
 	@echo "---- Iterative (Two Nested Loops) ----"
 	@echo " 01260 - Sales *"
 	@echo " 10487 - Closest Sums *"
@@ -335,4 +335,11 @@ count:
 	@echo "Runnning UVA10976"
 	javac $(SRC)/UVa10976.java -d $(TARGET)
 	java -cp $(TARGET) uva10976.Main < $(RSRC)/uva10976_in.txt | diff -s -y $(RSRC)/uva10976_out.txt -
+
+#######################################################
+01260:
+	--mkdir -p target/classes
+	@echo "Runnning UVA01260"
+	javac $(SRC)/UVa01260.java -d $(TARGET)
+	java -cp $(TARGET) uva01260.Main < $(RSRC)/uva01260_in.txt | diff -s -y $(RSRC)/uva01260_out.txt -
 
