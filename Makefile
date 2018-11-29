@@ -72,7 +72,7 @@ default:
 	@echo " 10976 - Fractions Again? -[ DONE]"
 	@echo "---- Iterative (Two Nested Loops) ----"
 	@echo " 01260 - Sales * [DONE]"
-	@echo " 10487 - Closest Sums *"
+	@echo " 10487 - Closest Sums * [DONE]"
 	@echo " 11242 - Tour de France *"
 	@echo "---- Iterative (Three or More Nested Loops, Easier) ----"
 	@echo " 00441 - Lotto *"
@@ -349,4 +349,11 @@ count:
 	@echo "Runnning UVA10487"
 	javac $(SRC)/UVa10487.java -d $(TARGET)
 	java -cp $(TARGET) uva10487.Main < $(RSRC)/uva10487_in.txt | diff -s -y $(RSRC)/uva10487_out.txt -
+
+#######################################################
+11242:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11242"
+	javac $(SRC)/UVa11242.java -d $(TARGET)
+	java -cp $(TARGET) uva11242.Main < $(RSRC)/uva11242_in.txt | diff -s -y $(RSRC)/uva11242_out.txt -
 
