@@ -33,22 +33,33 @@ class UVa00441 {
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva00441_in.txt";
 
     public void run() {
-        Scanner scan =readFile(fileName);
+       // Scanner scan =readFile(fileName);
         //BufferedReader scan =readwithBuffer(); // use readLine()
-        //Scanner scan =read();
+        Scanner scan =read();
 
+        String inData = scan.nextLine();
         while (true) {
-            String inData = scan.nextLine();
-            if(inData.equals("0")) break;
             int[] testCase = Arrays.stream(inData.split(" ")).mapToInt(Integer::parseInt).toArray();
-            System.out.println();
 
-            int max = (1 << testCase.length- 1) - 1;
-            for(int x = 0; x < max; x++) {
-                if(Integer.bitCount(x) == 6) {
-                    System.out.println(outData(testCase, x));
+            int k = testCase.length -1;
+            for(int a = 0; a < k - 5; a++) {
+                for(int b = a + 1; b < k - 4; b++) {
+                    for (int c = b + 1; c < k - 3; c++) {
+                        for (int d = c + 1; d < k - 2; d++) {
+                            for (int e = d + 1; e < k - 1; e++) {
+                                for (int f = e + 1; f < k; f++) {
+                                    System.out.printf("%d %d %d %d %d %d%n",
+                                            testCase[a+1], testCase[b+1], testCase[c+1], testCase[d+1], testCase[e+1], testCase[f+1]);
+                                }
+                            }
+                        }
+                    }
                 }
             }
+
+            inData = scan.nextLine();
+            if(inData.equals("0")) break;
+            System.out.println();
 
         }
     }
