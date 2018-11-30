@@ -75,7 +75,7 @@ default:
 	@echo " 10487 - Closest Sums * [DONE]"
 	@echo " 11242 - Tour de France *[DONE]"
 	@echo "---- Iterative (Three or More Nested Loops, Easier) ----"
-	@echo " 00441 - Lotto *"
+	@echo " 00441 - Lotto *[DONE]"
 	@echo " 00725 - Dart-a-Mania*"
 	@echo " 10102 - The Path in the ... *"
 	@echo "---- Iterative (Three-or-More Nested Loops, Harder) ----"
@@ -363,4 +363,11 @@ count:
 	@echo "Runnning UVA00441"
 	javac $(SRC)/UVa00441.java -d $(TARGET)
 	java -cp $(TARGET) uva00441.Main < $(RSRC)/uva00441_in.txt | diff -s -y $(RSRC)/uva00441_out.txt -
+
+#######################################################
+00735:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00735"
+	javac $(SRC)/UVa00735.java -d $(TARGET)
+	java -cp $(TARGET) uva00735.Main < $(RSRC)/uva00735_in.txt | diff -s -y $(RSRC)/uva00735_out.txt -
 
