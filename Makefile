@@ -79,7 +79,7 @@ default:
 	@echo " 00725 - Dart-a-Mania*[DONE]"
 	@echo " 10102 - The Path in the ...*[DONE]"
 	@echo "---- Iterative (Three-or-More Nested Loops, Harder) ----"
-	@echo " 10660 - Citizen attention ... *"
+	@echo " 10660 - Citizen attention ... * [DONE]"
 	@echo " 11565 - Simple Equations *"
 	@echo "---- Fancy Techniques ----"
 	@echo " 11553 - Grid Game *"
@@ -384,4 +384,11 @@ count:
 	@echo "Runnning UVA10660"
 	javac $(SRC)/UVa10660.java -d $(TARGET)
 	java -cp $(TARGET) uva10660.Main < $(RSRC)/uva10660_in.txt | diff -s -y $(RSRC)/uva10660_out.txt -
+
+#######################################################
+11565:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11565"
+	javac $(SRC)/UVa11565.java -d $(TARGET)
+	java -cp $(TARGET) uva11565.Main < $(RSRC)/uva11565_in.txt | diff -s -y $(RSRC)/uva11565_out.txt -
 
