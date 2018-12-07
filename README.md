@@ -64,3 +64,8 @@ while ( line != null ) {
     solve( i1, i2 );
     line = br.readLine();
 }
+
+
+
+Convert Recursion to Iteration
+http://blog.moertel.com/archive.html

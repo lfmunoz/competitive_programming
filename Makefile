@@ -80,7 +80,7 @@ default:
 	@echo " 10102 - The Path in the ...*[DONE]"
 	@echo "---- Iterative (Three-or-More Nested Loops, Harder) ----"
 	@echo " 10660 - Citizen attention ... * [DONE]"
-	@echo " 11565 - Simple Equations *"
+	@echo " 11565 - Simple Equations *[DONE]"
 	@echo "---- Fancy Techniques ----"
 	@echo " 11553 - Grid Game *"
 	@echo "---- Backtracking (Easy) ----"
@@ -391,4 +391,11 @@ count:
 	@echo "Runnning UVA11565"
 	javac $(SRC)/UVa11565.java -d $(TARGET)
 	java -cp $(TARGET) uva11565.Main < $(RSRC)/uva11565_in.txt | diff -s -y $(RSRC)/uva11565_out.txt -
+
+#######################################################
+11553:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11553"
+	javac $(SRC)/UVa11553.java -d $(TARGET)
+	java -cp $(TARGET) uva11553.Main < $(RSRC)/uva11553_in.txt | diff -s -y $(RSRC)/uva11553_out.txt -
 

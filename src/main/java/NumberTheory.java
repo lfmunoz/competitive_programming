@@ -84,27 +84,62 @@ public class NumberTheory {
      *  Generate permutations given a list of Integers
      * @param result
      * @param input
-     * @param left
-     * @param right
+     * @param left - starting index (inclusive)
+     * @param right - ending index (inclusive)
      */
-    public void permutations(List<List<Integer>> result, List<Integer> input, int left, int right) {
+    public <T> void permutations(List<List<T>> result, List<T> input, int left, int right) {
         if(left == right) {
             result.add(input);
         } else {
             for(int idx = left; idx <= right; idx++) {
-                List<Integer> temp = swap(input, left, idx);
+                List<T> temp = swap(input, left, idx);
                 permutations(result, temp, left+1, right);
             }
 
         }
     }
 
-    public List<Integer> swap(List<Integer> c, int x, int  y) {
-        List<Integer> temp  = new ArrayList<>(c);
+    public <T> List<T> swap(List<T> c, int x, int  y) {
+        List<T> temp  = new ArrayList<T>(c);
         Collections.swap(temp, x, y);
         return temp;
     }
 
 
+
+    void iterativeNestedLoop(int depth, int max)
+    {
+        // Initialize the slots to hold the current iteration value for each depth
+        //int* slots = (int*)alloca(sizeof(int) * depth);
+        int[] slots = new int[depth];
+
+        for (int i = 0; i < depth; i++) {
+            slots[i] = 0;
+        }
+
+        int index = 0;
+        while (true) {
+            // TODO: Your inner loop code goes here. You can inspect the values in slots
+
+
+            System.out.printf("%d %d %n", slots[0], slots[1]);
+
+            // Increment
+            slots[0]++;
+
+            // Carry
+            while (slots[index] == max) {
+                // Overflow, we're done
+                if (index == depth - 1) {
+                    return;
+                }
+
+                slots[index++] = 0;
+                slots[index]++;
+            }
+
+            index = 0;
+        }
+    }
 
 }
