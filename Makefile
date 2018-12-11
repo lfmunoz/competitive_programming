@@ -7,11 +7,7 @@ TARGET=target/classes
 
 
 
-################################################################################
-# Performance Testing
-################################################################################
-perf:
-	./gradlew jmh
+
 
 ########################################################
 .PHONY: default count
@@ -82,11 +78,26 @@ default:
 	@echo " 10660 - Citizen attention ... * [DONE]"
 	@echo " 11565 - Simple Equations *[DONE]"
 	@echo "---- Fancy Techniques ----"
-	@echo " 11553 - Grid Game *"
-	@echo "---- Backtracking (Easy) ----"
+	@echo " 11553 - Grid Game *[DONE]"
+	@echo "---- Recursive Backtracking (Easy) ----"
 	@echo " 00624 - CD * "
 	@echo " 10576 - Y2K Accounting Bug"
 	@echo " 11085 - Back to the 8-Queens"
+	@echo "---- Recursive Backtracking (Medium) ----"
+	@echo " 00524 - Prime Ring Problem"
+	@echo " 00574 - Sum It Up"
+	@echo " 10503 - The dominoes soliaire"
+	@echo "---- Recursive Backtracking (hard) ----"
+	@echo " 00193 - Graph Coloring"
+	@echo " 00416 - LED Test"
+	@echo " "
+	@echo "---- Divide and Conquer ----"
+
+################################################################################
+# Performance Testing
+################################################################################
+perf:
+	./gradlew jmh
 
 count:
 	ls -l src/main/resources/*_out.txt | wc -l
@@ -398,4 +409,11 @@ count:
 	@echo "Runnning UVA11553"
 	javac $(SRC)/UVa11553.java -d $(TARGET)
 	java -cp $(TARGET) uva11553.Main < $(RSRC)/uva11553_in.txt | diff -s -y $(RSRC)/uva11553_out.txt -
+
+#######################################################
+00624:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00624"
+	javac $(SRC)/UVa00624.java -d $(TARGET)
+	java -cp $(TARGET) uva00624.Main < $(RSRC)/uva00624_in.txt | diff -s -y $(RSRC)/uva00624_out.txt -
 
