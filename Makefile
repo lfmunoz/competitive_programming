@@ -80,7 +80,7 @@ default:
 	@echo "---- Fancy Techniques ----"
 	@echo " 11553 - Grid Game *[DONE]"
 	@echo "---- Recursive Backtracking (Easy) ----"
-	@echo " 00624 - CD * "
+	@echo " 00624 - CD * [DONE]"
 	@echo " 10576 - Y2K Accounting Bug"
 	@echo " 11085 - Back to the 8-Queens"
 	@echo "---- Recursive Backtracking (Medium) ----"
@@ -416,4 +416,11 @@ count:
 	@echo "Runnning UVA00624"
 	javac $(SRC)/UVa00624.java -d $(TARGET)
 	java -cp $(TARGET) uva00624.Main < $(RSRC)/uva00624_in.txt | diff -s -y $(RSRC)/uva00624_out.txt -
+
+#######################################################
+10576:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10576"
+	javac $(SRC)/UVa10576.java -d $(TARGET)
+	java -cp $(TARGET) uva10576.Main < $(RSRC)/uva10576_in.txt | diff -s -y $(RSRC)/uva10576_out.txt -
 
