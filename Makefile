@@ -82,7 +82,7 @@ default:
 	@echo "---- Recursive Backtracking (Easy) ----"
 	@echo " 00624 - CD * [DONE]"
 	@echo " 10576 - Y2K Accounting Bug [DONE]"
-	@echo " 11085 - Back to the 8-Queens"
+	@echo " 11085 - Back to the 8-Queens [DONE]"
 	@echo "---- Recursive Backtracking (Medium) ----"
 	@echo " 00524 - Prime Ring Problem"
 	@echo " 00574 - Sum It Up"
@@ -430,4 +430,18 @@ count:
 	@echo "Runnning UVA11085"
 	javac $(SRC)/UVa11085.java -d $(TARGET)
 	java -cp $(TARGET) uva11085.Main < $(RSRC)/uva11085_in.txt | diff -s -y $(RSRC)/uva11085_out.txt -
+
+#######################################################
+00524:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00524"
+	javac $(SRC)/UVa00524.java -d $(TARGET)
+	java -cp $(TARGET) uva00524.Main < $(RSRC)/uva00524_in.txt | diff -s -y $(RSRC)/uva00524_out.txt -
+
+#######################################################
+00574:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00574"
+	javac $(SRC)/UVa00574.java -d $(TARGET)
+	java -cp $(TARGET) uva00574.Main < $(RSRC)/uva00574_in.txt | diff -s -y $(RSRC)/uva00574_out.txt -
 
