@@ -16,7 +16,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 class Main {
     public static void main(String[] args) throws Exception {
@@ -31,31 +38,87 @@ class UVa00574 {
 
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva00574_in.txt";
 
+    int total;
+
+    Set<String> answer;
+
     public void run() {
         //Scanner scan =readFile(fileName);
         //BufferedReader scan =readwithBuffer(); // use readLine()
         Scanner scan =read();
 
-        while (true) {
-            String dimensions = scan.nextLine();
-            String[] values = dimensions.split(" ");
-            int N = Integer.parseInt(values[0]);
-            int n = Integer.parseInt(values[1]);
-            if (N == 0) break;
 
-            char[][] bigSquare = new char[N][N];
-            for(int x = 0; x < N; x++) {
-                String row = scan.nextLine();
-                bigSquare[x] = row.toCharArray();
+        while (scan.hasNextLine()) {
+            int[] input = Arrays.stream(scan.nextLine().split(" "))
+                    .mapToInt(Integer::parseInt).toArray();
+           if(input[0] == 0) return;
+
+            total = input[0];
+            answer = new TreeSet<>( Collections.reverseOrder()  );
+
+            int N = input[1];
+            List<Integer> numbers = new ArrayList<>();
+            for(int i = 0; i < N; i++) {
+                numbers.add(input[i+2]);
             }
-            char[][] smallSquare = new char[n][n];
-            for(int x = 0; x < n; x++) {
-                String row = scan.nextLine();
-                smallSquare[x] = row.toCharArray();
+
+            backtrack(numbers, 0, new ArrayList<>());
+
+            System.out.printf("Sums of %d:%n", total);
+            if(answer.size() == 0) {
+                System.out.println("NONE");
+            } else {
+                for (String s : answer) {
+                    System.out.println(s);
+                }
             }
+
+            //return;
         }
     }
 
+    void backtrack(List<Integer> numbers, int idx, List<Integer> result) {
+     //   indent(idx);
+     //   System.out.printf("state: idx = %d, result  = %s %n", idx, display(result)) ;
+
+        int sum = result.stream().mapToInt(Integer::intValue).sum();
+        if(sum == total) {
+            //System.out.println();
+            answer.add(display(result));
+        }
+        if(sum > total) return;
+        if(idx == numbers.size()) return;
+
+        backtrack(numbers, idx+1, result);
+        result.add(numbers.get(idx));
+        backtrack(numbers, idx+1, result);
+        result.remove(result.size()-1);
+
+    }
+
+
+    String display(List<Integer> result) {
+        StringBuilder sb = new StringBuilder();
+
+        if(result.size() == 1) {
+            sb.append(result.get(0));
+            return sb.toString();
+        }
+
+        for(int i = 0; i < result.size()-1; i++) {
+            sb.append(result.get(i));
+            sb.append("+");
+        }
+        sb.append(result.get(result.size()-1));
+        return sb.toString();
+    }
+
+    void indent(int n) {
+        for(int i =0; i < n; i++) {
+            System.out.printf(" ");
+        }
+
+    }
 
     ////////////////////////////////////////////////////////////////////
     // Input/Output Specific Functions

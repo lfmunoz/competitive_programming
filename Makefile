@@ -84,7 +84,7 @@ default:
 	@echo " 10576 - Y2K Accounting Bug [DONE]"
 	@echo " 11085 - Back to the 8-Queens [DONE]"
 	@echo "---- Recursive Backtracking (Medium) ----"
-	@echo " 00524 - Prime Ring Problem"
+	@echo " 00524 - Prime Ring Problem [ORDER WRONG]"
 	@echo " 00574 - Sum It Up"
 	@echo " 10503 - The dominoes soliaire"
 	@echo "---- Recursive Backtracking (hard) ----"
