@@ -69,3 +69,31 @@ while ( line != null ) {
 
 Convert Recursion to Iteration
 http://blog.moertel.com/archive.html
+
+
+
+
+Recursive Backtracking
+
+
+    String display(Pair[] result) {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < result.length-1; i++) {
+            sb.append(result[i]);
+            sb.append(" ");
+        }
+        sb.append(result[result.length-1]);
+        return sb.toString();
+    }
+
+    void swap(int[] result, int a, int b) {
+        int tmp = result[a];
+        result[a] = result[b];
+        result[b] = tmp;
+    }
+    void indent(int n) {
+        for(int i =0; i < n; i++) {
+            System.out.printf(" ");
+        }
+
+    }
