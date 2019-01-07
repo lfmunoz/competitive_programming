@@ -42,9 +42,19 @@ class UVa10503 {
             this.right = right;
         }
 
+
+       // Pair flip() {
+     //       return new Pair(right, left);
+     //   }
+
+
         Pair flip() {
-            return new Pair(right, left);
+            int tmp = this.left;
+            this.left = this.right;
+            this.right = tmp;
+            return this;
         }
+
 
         public String toString() {
            return "(" + left + "," + right + ")";
@@ -53,79 +63,126 @@ class UVa10503 {
 
     int m;
     int n;
+    Pair last = null;
    // List<Pair> pieces;
-   //Pair[] pieces;
-    int[] pieces;
+   Pair[] pieces;
+    //int[] pieces;
 
     public void run() {
-        Scanner scan =readFile(fileName);
+        //Scanner scan =readFile(fileName);
         //BufferedReader scan =readwithBuffer(); // use readLine()
-        //Scanner scan =read();
+        Scanner scan =read();
 
         while (scan.hasNextLine()) {
-           // n = Integer.parseInt(scan.nextLine()); // number of spaces
-           // if(n == 0) return;
-          //  m = Integer.parseInt(scan.nextLine()); // number of pieces
+            n = Integer.parseInt(scan.nextLine()); // number of spaces
+            if(n == 0) return;
+            m = Integer.parseInt(scan.nextLine()); // number of pieces
 
-            m = 4;
-            n = 2;
 
-           // pieces = new Pair[m+2];
-            pieces = new int[m];
 
-            for(int i = 0; i < m; i++) {
+            pieces = new Pair[m+2];
+            //pieces = new int[m];
 
-                /*
+
+            for(int i = 0; i < m+2; i++) {
+
                String[] input = scan.nextLine().split(" ");
                Pair pair = new Pair(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
-               if (i == 0) {
-                    result[0]  = pair;
-               } else if( i == 1) {
-                    result[n+1] = pair;
+
+               if( i == 1) {
+                   last = pair;
+               } else if(i == 0) {
+                   pieces[0] = pair;
                } else {
-                    pieces.add(pair);
+                   pieces[i-1] = pair;
                }
-               */
-
-                pieces[i] =  i;
-
             }
+            pieces[m+1] = last;
 
 
 
-            boolean answer0 = backtrack( pieces, 1); // 00
+
+            boolean answer0 = backtrack( pieces, 1); // 0
+         //   boolean answer0 = false;
+          //  pieces[0] = pieces[0].flip();
+          //  boolean answer1 = backtrack(pieces, 1); // 10
 
 
 
-           // result[0] = result[0].flip();
-           // boolean answer1 = backtrack(0, 0, result); // 10
-          //  result[result.length-1] = result[result.length-1].flip();
-          //  boolean answer2 = backtrack(0, 0, result); // 11
-          //  result[0] = result[0].flip();
-          //  boolean answer3 = backtrack(0, 0, result); // 01
-
-           // if(answer0 || answer1 || answer2 || answer3) {
-             if(answer0 ) {
+        //     if(answer0 || answer1 ) {
+            if(answer0 ) {
                 System.out.println("YES");
             } else {
                 System.out.println("NO");
 
             }
-            return;
+
+
+
+           // enumerate( pieces, 1);
+          //  return;
         }
     }
-    public boolean backtrack(int[] result, int left) {
 
-        if(left == m) {
-            System.out.println(display(result, n+1));
-            return true;
+    public void enumerate(Pair[] result, int left) {
+       // indent(left);
+     //   System.out.printf("left = %d, result ={ %s }%n", left, displayAll(result, n+1));
+        if(left == n+1) {
+
+            if(result[n].right == last.left || result[n].right == last.right) {
+                System.out.println(displayAll(result, n + 1));
+            }
+            //    System.out.printf("left = %d, result ={ %s }%n", left, displayAll(result, n+1));
+        }
+
+        for(int i = left; i < m+1; i++) {
+            swap(result, left, i);
+            enumerate(result, left+1);
+            swap(result, i, left);
         }
 
 
-        for(int i = left; i < result.length; i++) {
+    }
+
+    public boolean backtrack(Pair[] result, int left) {
+     //   indent(left);
+      //  System.out.printf("left = %d, result ={ %s }%n", left, displayAll(result, n+1));
+        if(left == n+1) {
+            if(result[n].right == last.left ) {
+      //      if(result[n].right == last.left || result[n].right == last.right) {
+             //   System.out.println(displayAll(result, n+1));
+                return true;
+            }
+            return false;
+        }
+
+
+        for(int i = left; i < m+1; i++) {
             swap(result, left, i);
-            backtrack(result, left+1);
+          //     System.out.println(displayAll(result, n+1));
+            if(validate(result, left)) {
+                if(backtrack(result, left+1)) {
+                    return true;
+                }
+            }
+            swap(result, i, left);
+
+
+            flip(result, i);
             swap(result, left, i);
+
+        //    System.out.println(displayAll(result, n+1));
+
+            if(validate(result, left)) {
+                if(backtrack(result, left+1)) {
+                    return true;
+                }
+            }
+            swap(result, i,left);
+            flip(result, i);
+
+
+
         }
 
         return false;
@@ -169,16 +226,28 @@ class UVa10503 {
     }
     */
 
-    boolean validate(Pair[] result, Pair pair, int index) {
-        if(result[index-1].right == pair.left) {
+    boolean validate(Pair[] result, int index) {
+        if(result[index-1].right == result[index].left) {
            return true;
         }
         return false;
     }
 
 
+
+
+    boolean validateAll(Pair[] result, int index) {
+        for(int i = 0; i < index-1; i++) {
+            if(result[i].right == result[i+1].left) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     // idx is how many
-    String display(int[] result, int idx) {
+    String display(Pair[] result, int idx) {
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < idx; i++) {
             sb.append(result[i]);
@@ -188,11 +257,34 @@ class UVa10503 {
         return sb.toString();
     }
 
-    void swap(int[] result, int a, int b) {
-        int tmp = result[a];
+    String displayAll(Pair[] result, int idx) {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < result.length; i++) {
+            sb.append(result[i]);
+            sb.append(" ");
+        }
+       // sb.append(result[idx]);
+        return sb.toString();
+    }
+
+
+    void swap(Pair[] result, int a, int b) {
+        Pair tmp = result[a];
         result[a] = result[b];
         result[b] = tmp;
     }
+
+    void flip(Pair[] result, int a) {
+        result[a].flip();
+    }
+
+    void swapFlip(Pair[] result, int a, int b) {
+        Pair tmp = result[a];
+        result[a] = result[b].flip();
+        result[b] = tmp;
+    }
+
+
     void indent(int n) {
         for(int i =0; i < n; i++) {
             System.out.printf("   ");

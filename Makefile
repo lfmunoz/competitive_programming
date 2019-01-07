@@ -86,7 +86,7 @@ default:
 	@echo "---- Recursive Backtracking (Medium) ----"
 	@echo " 00524 - Prime Ring Problem [ORDER WRONG]"
 	@echo " 00574 - Sum It Up [DONE]"
-	@echo " 10503 - The dominoes soliaire"
+	@echo " 10503 - The dominoes soliaire [SKIP]"
 	@echo "---- Recursive Backtracking (hard) ----"
 	@echo " 00193 - Graph Coloring"
 	@echo " 00416 - LED Test"
@@ -451,4 +451,11 @@ count:
 	@echo "Runnning UVA10503"
 	javac $(SRC)/UVa10503.java -d $(TARGET)
 	java -cp $(TARGET) uva10503.Main < $(RSRC)/uva10503_in.txt | diff -s -y $(RSRC)/uva10503_out.txt -
+
+#######################################################
+00193:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00193"
+	javac $(SRC)/UVa00193.java -d $(TARGET)
+	java -cp $(TARGET) uva00193.Main < $(RSRC)/uva00193_in.txt | diff -s -y $(RSRC)/uva00193_out.txt -
 
