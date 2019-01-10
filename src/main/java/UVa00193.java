@@ -17,13 +17,11 @@ import java.io.InputStreamReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.stream.IntStream;
+import java.util.TreeSet;
 
 class Main {
     public static void main(String[] args) throws Exception {
@@ -37,23 +35,24 @@ class UVa00193 {
 
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva00193_in.txt";
 
-
-    int count;
     int max;
-    Set<Integer> selected;
+    String maxResult;
     List<Set<Integer>> adjList;
 
+    int nodes;
+    int edges;
+
     public void run() {
-        Scanner scan =readFile(fileName);
+        //Scanner scan =readFile(fileName);
         //BufferedReader scan =readwithBuffer(); // use readLine()
-        //Scanner scan =read();
+        Scanner scan =read();
 
         int testCases = Integer.parseInt(scan.nextLine());
 
         for(int t = 0; t < testCases ; t++) {
             String[] config = scan.nextLine().split(" ");
-            int nodes = Integer.parseInt(config[0]);
-            int edges = Integer.parseInt(config[1]);
+            nodes = Integer.parseInt(config[0]);
+            edges = Integer.parseInt(config[1]);
 
             adjList = new ArrayList<>();
             for(int n = 0; n < nodes+1; n++) {
@@ -72,60 +71,57 @@ class UVa00193 {
                 adjList.get(end).add(start);
             }
 
-            count = 0;
             max = 0;
-            int[] numbers = IntStream.range(1, nodes+1).toArray();
-            String maxResult = "N/A";
-
-         //   for(int i = 1; i < adjList.size(); i++) {
-                selected = new HashSet<>();
-            //    selected.add(i);
-                backtrack(numbers, 0, new ArrayList<>());
-           //     if(count > max) {
-          //          maxResult = selected.toString();
-         //       }
-         //   }
-
-
-            //printAdjList(adjList);
+            backtrack(1, new TreeSet<>());
+            System.out.println(max);
             System.out.println(maxResult);
 
-            if(testCases - 1 != t) System.out.println();
+            if(testCases - 1 != t) scan.nextLine();
         }
 
     }
 
-    public void backtrack(int[] myArr, int left, List<Integer> result) {
-        //  indent(left);
-        //  System.out.println(left + " : "  + listToString(result));
-        if(left == myArr.length) {
-            System.out.println(listToString(result));
+    public void backtrack(int idx, Set<Integer> result) {
+      //    indent(idx);
+      //    System.out.println(idx + " : "  + setToString(result));
+        if(idx == nodes+1) {
+            if(max < result.size()) {
+                max  = result.size();
+                maxResult = setToString(result);
+            }
+         //   System.out.println("result " + setToString(result));
             return;
         }
 
         // don't include
-        backtrack(myArr, left+1,result);
+        backtrack(idx+1,result);
         // include
-        result.add(myArr[left]);
-        backtrack(myArr, left+1, result);
-        result.remove(result.size()-1);
-    }
-
-
-    public void printAdjList(List<Set<Integer>> adjList) {
-        for(int i = 1 ; i < adjList.size(); i++) {
-            //Set<Integer> list = adjList.get(i).toString();
-            String set = adjList.get(i).toString();
-            System.out.printf("%d : %s %n", i, set);
+        if(!intersect(result, adjList.get(idx))) {
+            result.add(idx);
+            backtrack(idx+1, result);
+            result.remove(idx);
         }
     }
 
-    public String listToString(List<Integer> myArr) {
+
+    public boolean intersect(Set<Integer> a, Set<Integer> b) {
+        long count = a.stream()
+                .filter(b::contains).count();
+        return (count > 0L);
+    }
+
+    public void indent(int N) {
+        for(int i = 0; i < N; i++) {
+            System.out.printf(" ");
+        }
+    }
+
+    public String setToString(Set<Integer> mySet) {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < myArr.size(); i++) {
-            sb.append(myArr.get(i) + " ");
+        for(Integer i: mySet) {
+            sb.append(i + " ");
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     ////////////////////////////////////////////////////////////////////

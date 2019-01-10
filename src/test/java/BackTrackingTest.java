@@ -28,7 +28,7 @@ public class BackTrackingTest {
 
     @Test
     public void include_Not_include() {
-        int[] numbers =IntStream.range(0, 3).toArray();
+        int[] numbers =IntStream.range(0, 6).toArray();
         include(numbers, 0, new ArrayList<>());
     }
 
