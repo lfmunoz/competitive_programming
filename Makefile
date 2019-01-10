@@ -86,7 +86,7 @@ default:
 	@echo "---- Recursive Backtracking (Medium) ----"
 	@echo " 00524 - Prime Ring Problem [ORDER WRONG]"
 	@echo " 00574 - Sum It Up [DONE]"
-	@echo " 10503 - The dominoes soliaire [SKIP]"
+	@echo " 10503 - The dominoes soliaire [DONE]"
 	@echo "---- Recursive Backtracking (hard) ----"
 	@echo " 00193 - Graph Coloring"
 	@echo " 00416 - LED Test"

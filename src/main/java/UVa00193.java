@@ -16,7 +16,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.stream.IntStream;
 
 class Main {
     public static void main(String[] args) throws Exception {
@@ -26,51 +33,99 @@ class Main {
     }
 }
 
-
 class UVa00193 {
 
     private String fileName = "/home/luis/projects/competitive_programming/src/main/resources/uva00193_in.txt";
 
+
+    int count;
+    int max;
+    Set<Integer> selected;
+    List<Set<Integer>> adjList;
+
     public void run() {
-        //Scanner scan =readFile(fileName);
+        Scanner scan =readFile(fileName);
         //BufferedReader scan =readwithBuffer(); // use readLine()
-        Scanner scan =read();
+        //Scanner scan =read();
 
-        while (true) {
-            String dimensions = scan.nextLine();
-            String[] values = dimensions.split(" ");
-            int N = Integer.parseInt(values[0]);
-            int n = Integer.parseInt(values[1]);
-            if (N == 0) break;
+        int testCases = Integer.parseInt(scan.nextLine());
 
-            char[][] bigSquare = new char[N][N];
-            for(int x = 0; x < N; x++) {
-                String row = scan.nextLine();
-                bigSquare[x] = row.toCharArray();
+        for(int t = 0; t < testCases ; t++) {
+            String[] config = scan.nextLine().split(" ");
+            int nodes = Integer.parseInt(config[0]);
+            int edges = Integer.parseInt(config[1]);
+
+            adjList = new ArrayList<>();
+            for(int n = 0; n < nodes+1; n++) {
+                adjList.add(new HashSet<>());
             }
-            char[][] smallSquare = new char[n][n];
-            for(int x = 0; x < n; x++) {
-                String row = scan.nextLine();
-                smallSquare[x] = row.toCharArray();
+
+           // System.out.println(nodes);
+            //System.out.println(edges);
+
+            for (int e = 0; e < edges; e++) {
+                String[] edgeIn = scan.nextLine().split(" ");
+                int start = Integer.parseInt(edgeIn[0]);
+                int end = Integer.parseInt(edgeIn[1]);
+
+                adjList.get(start).add(end);
+                adjList.get(end).add(start);
             }
-            compute(smallSquare, bigSquare);
+
+            count = 0;
+            max = 0;
+            int[] numbers = IntStream.range(1, nodes+1).toArray();
+            String maxResult = "N/A";
+
+         //   for(int i = 1; i < adjList.size(); i++) {
+                selected = new HashSet<>();
+            //    selected.add(i);
+                backtrack(numbers, 0, new ArrayList<>());
+           //     if(count > max) {
+          //          maxResult = selected.toString();
+         //       }
+         //   }
+
+
+            //printAdjList(adjList);
+            System.out.println(maxResult);
+
+            if(testCases - 1 != t) System.out.println();
+        }
+
+    }
+
+    public void backtrack(int[] myArr, int left, List<Integer> result) {
+        //  indent(left);
+        //  System.out.println(left + " : "  + listToString(result));
+        if(left == myArr.length) {
+            System.out.println(listToString(result));
+            return;
+        }
+
+        // don't include
+        backtrack(myArr, left+1,result);
+        // include
+        result.add(myArr[left]);
+        backtrack(myArr, left+1, result);
+        result.remove(result.size()-1);
+    }
+
+
+    public void printAdjList(List<Set<Integer>> adjList) {
+        for(int i = 1 ; i < adjList.size(); i++) {
+            //Set<Integer> list = adjList.get(i).toString();
+            String set = adjList.get(i).toString();
+            System.out.printf("%d : %s %n", i, set);
         }
     }
 
-    private void compute(char[][] smallSquare, char[][] bigSquare) {
-
-        for(int x = 0; x < N; x++) {
-            for(int y = 0; y < N; y++) {
-                String submatrix = stringMatrix(bigSquare, y, x, n);
-                if (submatrix != null ) {
-                    if (submatrix.equals(deg0)) c0++;
-                    if (submatrix.equals(deg90)) c90++;
-                    if (submatrix.equals(deg180)) c180++;
-                    if (submatrix.equals(deg270)) c270++;
-                }
-            }
+    public String listToString(List<Integer> myArr) {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < myArr.size(); i++) {
+            sb.append(myArr.get(i) + " ");
         }
-        System.out.println(c0 + " " + c90 + " " + c180 + " " + c270);
+        return sb.toString();
     }
 
     ////////////////////////////////////////////////////////////////////
