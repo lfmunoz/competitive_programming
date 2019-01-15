@@ -88,7 +88,7 @@ default:
 	@echo " 00574 - Sum It Up [DONE]"
 	@echo " 10503 - The dominoes soliaire [DONE]"
 	@echo "---- Recursive Backtracking (hard) ----"
-	@echo " 00193 - Graph Coloring"
+	@echo " 00193 - Graph Coloring - [DONE]"
 	@echo " 00416 - LED Test"
 	@echo " "
 	@echo "---- Divide and Conquer ----"
@@ -458,4 +458,12 @@ count:
 	@echo "Runnning UVA00193"
 	javac $(SRC)/UVa00193.java -d $(TARGET)
 	java -cp $(TARGET) uva00193.Main < $(RSRC)/uva00193_in.txt | diff -s -y $(RSRC)/uva00193_out.txt -
+
+#######################################################
+00416:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00416"
+	javac $(SRC)/UVa00416.java -d $(TARGET)
+	java -cp $(TARGET) uva00416.Main < $(RSRC)/uva00416_in.txt | diff -s -y $(RSRC)/uva00416_out.txt -
+
 
