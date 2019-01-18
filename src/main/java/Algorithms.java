@@ -78,4 +78,28 @@ public class Algorithms {
         }
     }
 
+
+    static public int scanSortedArray(int[] arr, int start, int end, int value) {
+        if(start > end) return -1;
+        int middle = findMiddleIndex(start, end);
+        int diff = Integer.compare(value, arr[middle]);
+        if(diff == 0) {
+            return middle;
+        } else if (diff > 0) {
+            return scanSortedArray(arr, middle+1, end, value);
+        } else {
+            return scanSortedArray(arr, start, middle-1, value);
+        }
+    }
+
+    static public boolean scanSortedArrayHelper(int[] arr, int idx, int value) {
+        return false;
+    }
+
+
+    static public int findMiddleIndex(int startIdx, int endIdx) {
+        int difference = (int) Math.ceil( (endIdx - startIdx) / 2.0);
+        return  difference + startIdx;
+    }
+
 }

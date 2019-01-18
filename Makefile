@@ -89,9 +89,24 @@ default:
 	@echo " 10503 - The dominoes soliaire [DONE]"
 	@echo "---- Recursive Backtracking (hard) ----"
 	@echo " 00193 - Graph Coloring - [DONE]"
-	@echo " 00416 - LED Test"
+	@echo " 00416 - LED Test - [DONE]"
 	@echo " "
 	@echo "---- Divide and Conquer ----"
+	@echo "---- Binary Search ---------"
+	@echo " 11057 - Exact Sum"
+	@echo "---- Bisection Method ---------"
+	@echo " 10341 - Solve It"
+	@echo " 11413 - Fill the .."
+	@echo "---- Greedy --------------------"
+	@echo " 11389 - The Bus Driver Problem "
+	@echo " 11292 - Dragon of Loowater"
+	@echo " 10656 - Maximum Sum (II)"
+	@echo " 10718 - Bit Mask"
+	@echo " 11157 - Dynamic Frog"
+	@echo "---- Dynamic Programming ---------"
+	@echo "---- Graph ---------"
+	@echo " 11831 - Sticker Collector"
+	@echo " 11906 - Knight in a War Grid"
 
 ################################################################################
 # Performance Testing
@@ -465,5 +480,13 @@ count:
 	@echo "Runnning UVA00416"
 	javac $(SRC)/UVa00416.java -d $(TARGET)
 	java -cp $(TARGET) uva00416.Main < $(RSRC)/uva00416_in.txt | diff -s -y $(RSRC)/uva00416_out.txt -
+
+
+#######################################################
+11057:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11057"
+	javac $(SRC)/UVa11057.java -d $(TARGET)
+	java -cp $(TARGET) uva11057.Main < $(RSRC)/uva11057_in.txt | diff -s -y $(RSRC)/uva11057_out.txt -
 
 

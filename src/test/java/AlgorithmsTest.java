@@ -4,9 +4,8 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-
-
 import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;  // main one
 
 public class AlgorithmsTest {
 
@@ -42,5 +41,48 @@ public class AlgorithmsTest {
         int result;
         result = Algorithms.selection(intArr, 0, intArr.length-1, 3);
         System.out.println("Result: " + Integer.toString(result));
+    }
+
+    @Test
+    public void test_scanSortedArray() {
+        int[] intArr = {1, 2, 3, 4, 5, 6, 7, 8, 12, 250};
+
+        assertThat(Algorithms.scanSortedArray(intArr, 7, 9, 1))
+                .isEqualTo(-1);
+
+        assertThat(Algorithms.scanSortedArray(intArr, 0, intArr.length-1, 10))
+                .isEqualTo(-1);
+
+        assertThat(Algorithms.scanSortedArray(intArr, 0, 1, 10))
+                .isEqualTo(-1);
+
+        assertThat(Algorithms.scanSortedArray(intArr, 0, 1, 2))
+                .isEqualTo(1);
+        assertThat(Algorithms.scanSortedArray(intArr, 0, 1, 1))
+                .isEqualTo(0);
+        assertThat(Algorithms.scanSortedArray(intArr, 0, 0, 1))
+                .isEqualTo(0);
+        assertThat(Algorithms.scanSortedArray(intArr, 0, intArr.length-1, 4))
+                .isEqualTo(3);
+        assertThat(Algorithms.scanSortedArray(intArr, 0, intArr.length-1, 1))
+                .isEqualTo(0);
+        assertThat(Algorithms.scanSortedArray(intArr, 0, intArr.length-1, 6))
+                .isEqualTo(5);
+        assertThat(Algorithms.scanSortedArray(intArr, 0, intArr.length-1, 7))
+                .isEqualTo(6);
+        assertThat(Algorithms.scanSortedArray(intArr, 0, intArr.length-2, 6))
+                .isEqualTo(5);
+        assertThat(Algorithms.scanSortedArray(intArr, 0, intArr.length-2, 5))
+                .isEqualTo(4);
+    }
+
+    @Test
+    public void test_findMiddleIndex() {
+        assertThat(Algorithms.findMiddleIndex(4, 5)).isEqualTo(5);
+        assertThat(Algorithms.findMiddleIndex(4, 4)).isEqualTo(4);
+        assertThat(Algorithms.findMiddleIndex(1, 3)).isEqualTo(2);
+        assertThat(Algorithms.findMiddleIndex(1, 4)).isEqualTo(3);
+
+
     }
 }
