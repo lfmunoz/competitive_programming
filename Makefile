@@ -93,7 +93,7 @@ default:
 	@echo " "
 	@echo "---- Divide and Conquer ----"
 	@echo "---- Binary Search ---------"
-	@echo " 11057 - Exact Sum"
+	@echo " 11057 - Exact Sum [DONE]"
 	@echo "---- Bisection Method ---------"
 	@echo " 10341 - Solve It"
 	@echo " 11413 - Fill the .."
@@ -489,4 +489,11 @@ count:
 	javac $(SRC)/UVa11057.java -d $(TARGET)
 	java -cp $(TARGET) uva11057.Main < $(RSRC)/uva11057_in.txt | diff -s -y $(RSRC)/uva11057_out.txt -
 
+
+#######################################################
+10341:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10341"
+	javac $(SRC)/UVa10341.java -d $(TARGET)
+	java -cp $(TARGET) uva10341.Main < $(RSRC)/uva10341_in.txt | diff -s -y $(RSRC)/uva10341_out.txt -
 
