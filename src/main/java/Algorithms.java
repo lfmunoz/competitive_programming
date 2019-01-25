@@ -97,9 +97,14 @@ public class Algorithms {
     }
 
 
+    // favor high
     static public int findMiddleIndex(int startIdx, int endIdx) {
         int difference = (int) Math.ceil( (endIdx - startIdx) / 2.0);
         return  difference + startIdx;
     }
-
+    // favor low
+    static public int findMiddleIndexL(int startIdx, int endIdx) {
+        int difference = (int) Math.floor( (endIdx - startIdx) / 2.0);
+        return  difference + startIdx;
+    }
 }

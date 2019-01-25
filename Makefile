@@ -95,7 +95,7 @@ default:
 	@echo "---- Binary Search ---------"
 	@echo " 11057 - Exact Sum [DONE]"
 	@echo "---- Bisection Method ---------"
-	@echo " 10341 - Solve It"
+	@echo " 10341 - Solve It - [DONE]"
 	@echo " 11413 - Fill the .."
 	@echo "---- Greedy --------------------"
 	@echo " 11389 - The Bus Driver Problem "
@@ -496,4 +496,11 @@ count:
 	@echo "Runnning UVA10341"
 	javac $(SRC)/UVa10341.java -d $(TARGET)
 	java -cp $(TARGET) uva10341.Main < $(RSRC)/uva10341_in.txt | diff -s -y $(RSRC)/uva10341_out.txt -
+
+#######################################################
+11413:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11413"
+	javac $(SRC)/UVa11413.java -d $(TARGET)
+	java -cp $(TARGET) uva11413.Main < $(RSRC)/uva11413_in.txt | diff -s -y $(RSRC)/uva11413_out.txt -
 
