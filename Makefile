@@ -100,7 +100,7 @@ default:
 	@echo "---- Greedy --------------------"
 	@echo " 11389 - The Bus Driver Problem [DONE]"
 	@echo " 11292 - Dragon of Loowater -[DONE]"
-	@echo " 10656 - Maximum Sum (II)"
+	@echo " 10656 - Maximum Sum (II) [DONE]"
 	@echo " 10718 - Bit Mask"
 	@echo " 11157 - Dynamic Frog"
 	@echo "---- Dynamic Programming ---------"
@@ -524,4 +524,11 @@ count:
 	@echo "Runnning UVA10656"
 	javac $(SRC)/UVa10656.java -d $(TARGET)
 	java -cp $(TARGET) uva10656.Main < $(RSRC)/uva10656_in.txt | diff -s -y $(RSRC)/uva10656_out.txt -
+
+#######################################################
+10718:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10718"
+	javac $(SRC)/UVa10718.java -d $(TARGET)
+	java -cp $(TARGET) uva10718.Main < $(RSRC)/uva10718_in.txt | diff -s -y $(RSRC)/uva10718_out.txt -
 
