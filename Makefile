@@ -97,13 +97,34 @@ default:
 	@echo "---- Bisection Method ---------"
 	@echo " 10341 - Solve It - [DONE]"
 	@echo " 11413 - Fill the ..[DONE]"
+	@echo " "
 	@echo "---- Greedy --------------------"
 	@echo " 11389 - The Bus Driver Problem [DONE]"
 	@echo " 11292 - Dragon of Loowater -[DONE]"
 	@echo " 10656 - Maximum Sum (II) [DONE]"
 	@echo " 10718 - Bit Mask - [DONE]"
-	@echo " 11157 - Dynamic Frog"
+	@echo " 11157 - Dynamic Frog - [DONE]"
+	@echo " "
 	@echo "---- Dynamic Programming ---------"
+	@echo " 00787 - Maximum Sub"
+	@echo " 10684 - The Jackpot"
+	@echo " 00108 - Maximum Sum"
+	@echo " 10827 - Maximum Sum on.."
+	@echo " 00481 - What Goes up?"
+	@echo " 11456 - Trainsorting"
+	@echo " 11790 - Murcia's Skyline"
+	@echo " 10616 - Divisible Group Sum"
+	@echo " 10819 - Trouble of 13-Dots"
+	@echo " 00357 - Let Me Count The ways"
+	@echo " 10306 - e-Coins"
+	@echo " 11517 - Exact Change"
+	@echo " 00216 - Getting in Line"
+	@echo " 10496 - Collecting Beepers"
+	@echo " 11284 - Shopping Trip"
+	@echo " 10337 - Flight Planner"
+	@echo " 10721 - Bar Codes"
+	@echo " 10943 - How do you add?"
+	@echo " "
 	@echo "---- Graph ---------"
 	@echo " 11831 - Sticker Collector"
 	@echo " 11906 - Knight in a War Grid"
@@ -538,4 +559,11 @@ count:
 	@echo "Runnning UVA11157"
 	javac $(SRC)/UVa11157.java -d $(TARGET)
 	java -cp $(TARGET) uva11157.Main < $(RSRC)/uva11157_in.txt | diff -s -y $(RSRC)/uva11157_out.txt -
+
+#######################################################
+00787:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00787"
+	javac (SRC)/UVa00787.java -d (TARGET)
+	java -cp (TARGET) uva00787.Main < (RSRC)/uva00787_in.txt | diff -s -y (RSRC)/uva00787_out.txt -
 
