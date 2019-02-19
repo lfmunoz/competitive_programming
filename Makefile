@@ -564,6 +564,7 @@ count:
 00787:
 	--mkdir -p target/classes
 	@echo "Runnning UVA00787"
-	javac (SRC)/UVa00787.java -d (TARGET)
-	java -cp (TARGET) uva00787.Main < (RSRC)/uva00787_in.txt | diff -s -y (RSRC)/uva00787_out.txt -
+	javac $(SRC)/UVa00787.java -d $(TARGET)
+	java -cp $(TARGET) uva00787.Main < $(RSRC)/uva00787_in.txt | diff -s -y $(RSRC)/uva00787_out.txt -
+
 
