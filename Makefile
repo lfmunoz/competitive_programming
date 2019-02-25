@@ -106,7 +106,7 @@ default:
 	@echo " 11157 - Dynamic Frog - [DONE]"
 	@echo " "
 	@echo "---- Dynamic Programming ---------"
-	@echo " 00787 - Maximum Sub"
+	@echo " 00787 - Maximum Sub - [DONE]"
 	@echo " 10684 - The Jackpot"
 	@echo " 00108 - Maximum Sum"
 	@echo " 10827 - Maximum Sum on.."
@@ -567,4 +567,11 @@ count:
 	javac $(SRC)/UVa00787.java -d $(TARGET)
 	java -cp $(TARGET) uva00787.Main < $(RSRC)/uva00787_in.txt | diff -s -y $(RSRC)/uva00787_out.txt -
 
+
+#######################################################
+10684:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10684"
+	javac $(SRC)/UVa10684.java -d $(TARGET)
+	java -cp $(TARGET) uva10684.Main < $(RSRC)/uva10684_in.txt | diff -s -y $(RSRC)/uva10684_out.txt -
 
