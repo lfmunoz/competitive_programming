@@ -108,7 +108,7 @@ default:
 	@echo "---- Dynamic Programming ---------"
 	@echo " 00787 - Maximum Sub - [DONE]"
 	@echo " 10684 - The Jackpot - [DONE]"
-	@echo " 00108 - Maximum Sum"
+	@echo " 00108 - Maximum Sum - [DONE]"
 	@echo " 10827 - Maximum Sum on.."
 	@echo " 00481 - What Goes up?"
 	@echo " 11456 - Trainsorting"
@@ -581,4 +581,11 @@ count:
 	@echo "Runnning UVA00108"
 	javac $(SRC)/UVa00108.java -d $(TARGET)
 	java -cp $(TARGET) uva00108.Main < $(RSRC)/uva00108_in.txt | diff -s -y $(RSRC)/uva00108_out.txt -
+
+#######################################################
+10827:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10827"
+	javac $(SRC)/UVa10827.java -d $(TARGET)
+	java -cp $(TARGET) uva10827.Main < $(RSRC)/uva10827_in.txt | diff -s -y $(RSRC)/uva10827_out.txt -
 
