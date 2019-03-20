@@ -110,8 +110,8 @@ default:
 	@echo " 10684 - The Jackpot - [DONE]"
 	@echo " 00108 - Maximum Sum - [DONE]"
 	@echo " 10827 - Maximum Sum on..[DONE]"
-	@echo " 00481 - What Goes up?"
-	@echo " 11456 - Trainsorting"
+	@echo " 00481 - What Goes up? [TLE]"
+	@echo " 11456 - Trainsorting - [DONE]"
 	@echo " 11790 - Murcia's Skyline"
 	@echo " 10616 - Divisible Group Sum"
 	@echo " 10819 - Trouble of 13-Dots"
@@ -595,4 +595,18 @@ count:
 	@echo "Runnning UVA00481"
 	javac $(SRC)/UVa00481.java -d $(TARGET)
 	java -cp $(TARGET) uva00481.Main < $(RSRC)/uva00481_in.txt | diff -s -y $(RSRC)/uva00481_out.txt -
+
+#######################################################
+11456:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11456"
+	javac $(SRC)/UVa11456.java -d $(TARGET)
+	java -cp $(TARGET) uva11456.Main < $(RSRC)/uva11456_in.txt | diff -s -y $(RSRC)/uva11456_out.txt -
+
+#######################################################
+11790:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11790"
+	javac $(SRC)/UVa11790.java -d $(TARGET)
+	java -cp $(TARGET) uva11790.Main < $(RSRC)/uva11790_in.txt | diff -s -y $(RSRC)/uva11790_out.txt -
 
