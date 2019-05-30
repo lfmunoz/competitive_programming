@@ -10,6 +10,17 @@ public class NumberTheoryTest {
 
     final private long N_MAX = 10;
 
+
+    @Test
+    public void divides_test() {
+       // assertThat(NumberTheory.divides(0, 0)).isFalse();
+        assertThat(NumberTheory.divides(6, 0)).isTrue();
+        assertThat(NumberTheory.divides(5, 10)).isTrue();
+        assertThat(NumberTheory.divides(2, 10)).isTrue();
+        assertThat(NumberTheory.divides(1, 10)).isTrue();
+        assertThat(NumberTheory.divides(3, 10)).isFalse();
+    }
+
     @Test
     public void fibonacci_test() {
         assertThat(NumberTheory.fibonacci(0)).isEqualTo(1);

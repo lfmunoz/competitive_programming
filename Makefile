@@ -112,15 +112,19 @@ default:
 	@echo " 10827 - Maximum Sum on..[DONE]"
 	@echo " 00481 - What Goes up? [TLE]"
 	@echo " 11456 - Trainsorting - [DONE]"
-	@echo " 11790 - Murcia's Skyline"
-	@echo " 10616 - Divisible Group Sum"
+	@echo " 11790 - Murcia's Skyline - [DONE]"
+	@echo " --- Knapsack (Subset Sum) --- "
+	@echo " 10616 - Divisible Group Sum [Come back to this when you learn MOD]"
 	@echo " 10819 - Trouble of 13-Dots"
+	@echo " --- Coin Change (CC) --- "
 	@echo " 00357 - Let Me Count The ways"
 	@echo " 10306 - e-Coins"
 	@echo " 11517 - Exact Change"
+	@echo " --- Traveling Salesman Problem (TSP) --- "
 	@echo " 00216 - Getting in Line"
 	@echo " 10496 - Collecting Beepers"
 	@echo " 11284 - Shopping Trip"
+	@echo " --- Non Classical --- "
 	@echo " 10337 - Flight Planner"
 	@echo " 10721 - Bar Codes"
 	@echo " 10943 - How do you add?"
@@ -609,4 +613,12 @@ count:
 	@echo "Runnning UVA11790"
 	javac $(SRC)/UVa11790.java -d $(TARGET)
 	java -cp $(TARGET) uva11790.Main < $(RSRC)/uva11790_in.txt | diff -s -y $(RSRC)/uva11790_out.txt -
+
+#######################################################
+10616:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10616"
+	javac $(SRC)/UVa10616.java -d $(TARGET)
+	java -cp $(TARGET) uva10616.Main < $(RSRC)/uva10616_in.txt | diff -s -y $(RSRC)/uva10616_out.txt -
+
 

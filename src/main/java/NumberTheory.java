@@ -24,6 +24,11 @@ public class NumberTheory {
         return result;
     }
 
+    public static boolean divides(int a, int b) {
+        int result = b % a;
+        System.out.printf("%d mod %d = %d %n", b, a, result);
+        return result == 0;
+    }
 
     public static int factorial(int num) {
         return 1;
