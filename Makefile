@@ -622,3 +622,10 @@ count:
 	java -cp $(TARGET) uva10616.Main < $(RSRC)/uva10616_in.txt | diff -s -y $(RSRC)/uva10616_out.txt -
 
 
+#######################################################
+10819:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10819"
+	javac $(SRC)/UVa10819.java -d $(TARGET)
+	java -cp $(TARGET) uva10819.Main < $(RSRC)/uva10819_in.txt | diff -s -y $(RSRC)/uva10819_out.txt -
+

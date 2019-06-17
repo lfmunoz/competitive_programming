@@ -76,7 +76,7 @@ class UVa10616 {
                 M = D_M[1]; // choose any M of them
 
                 memo.clear();
-                mTable = new int[][];
+            //    mTable = new int[][];
                 System.out.printf("QUERY %d: %d%n", query++,  val(0, 0, 0 ));
             }
         }

@@ -53,25 +53,11 @@ class UVa11790 {
                 String row = scan.nextLine();
                 smallSquare[x] = row.toCharArray();
             }
-            compute(smallSquare, bigSquare);
+        //    compute(smallSquare, bigSquare);
         }
     }
 
-    private void compute(char[][] smallSquare, char[][] bigSquare) {
 
-        for(int x = 0; x < N; x++) {
-            for(int y = 0; y < N; y++) {
-                String submatrix = stringMatrix(bigSquare, y, x, n);
-                if (submatrix != null ) {
-                    if (submatrix.equals(deg0)) c0++;
-                    if (submatrix.equals(deg90)) c90++;
-                    if (submatrix.equals(deg180)) c180++;
-                    if (submatrix.equals(deg270)) c270++;
-                }
-            }
-        }
-        System.out.println(c0 + " " + c90 + " " + c180 + " " + c270);
-    }
 
     ////////////////////////////////////////////////////////////////////
     // Input/Output Specific Functions
