@@ -115,7 +115,7 @@ default:
 	@echo " 11790 - Murcia's Skyline - [DONE]"
 	@echo " --- Knapsack (Subset Sum) --- "
 	@echo " 10616 - Divisible Group Sum [Come back to this when you learn MOD]"
-	@echo " 10819 - Trouble of 13-Dots"
+	@echo " 10819 - Trouble of 13-Dots - [DONE]"
 	@echo " --- Coin Change (CC) --- "
 	@echo " 00357 - Let Me Count The ways"
 	@echo " 10306 - e-Coins"
@@ -628,4 +628,11 @@ count:
 	@echo "Runnning UVA10819"
 	javac $(SRC)/UVa10819.java -d $(TARGET)
 	java -cp $(TARGET) uva10819.Main < $(RSRC)/uva10819_in.txt | diff -s -y $(RSRC)/uva10819_out.txt -
+
+#######################################################
+00357:
+	--mkdir -p target/classes
+	@echo "Runnning UVA00357"
+	javac $(SRC)/UVa00357.java -d $(TARGET)
+	java -cp $(TARGET) uva00357.Main < $(RSRC)/uva00357_in.txt | diff -s -y $(RSRC)/uva00357_out.txt -
 
