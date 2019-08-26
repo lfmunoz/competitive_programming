@@ -117,7 +117,7 @@ default:
 	@echo " 10616 - Divisible Group Sum [Come back to this when you learn MOD]"
 	@echo " 10819 - Trouble of 13-Dots - [DONE]"
 	@echo " --- Coin Change (CC) --- "
-	@echo " 00357 - Let Me Count The ways"
+	@echo " 00357 - Let Me Count The ways - [DONE]"
 	@echo " 10306 - e-Coins"
 	@echo " 11517 - Exact Change"
 	@echo " --- Traveling Salesman Problem (TSP) --- "
@@ -635,4 +635,11 @@ count:
 	@echo "Runnning UVA00357"
 	javac $(SRC)/UVa00357.java -d $(TARGET)
 	java -cp $(TARGET) uva00357.Main < $(RSRC)/uva00357_in.txt | diff -s -y $(RSRC)/uva00357_out.txt -
+
+#######################################################
+10306:
+	--mkdir -p target/classes
+	@echo "Runnning UVA10306"
+	javac $(SRC)/UVa10306.java -d $(TARGET)
+	java -cp $(TARGET) uva10306.Main < $(RSRC)/uva10306_in.txt | diff -s -y $(RSRC)/uva10306_out.txt -
 
