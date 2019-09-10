@@ -118,7 +118,7 @@ default:
 	@echo " 10819 - Trouble of 13-Dots - [DONE]"
 	@echo " --- Coin Change (CC) --- "
 	@echo " 00357 - Let Me Count The ways - [DONE]"
-	@echo " 10306 - e-Coins"
+	@echo " 10306 - e-Coins [RETURN TO ME !!!****!!!!!]"
 	@echo " 11517 - Exact Change"
 	@echo " --- Traveling Salesman Problem (TSP) --- "
 	@echo " 00216 - Getting in Line"
@@ -130,8 +130,24 @@ default:
 	@echo " 10943 - How do you add?"
 	@echo " "
 	@echo "---- Graph ---------"
+	@echo " "
+	@echo "---- Just Graph Traversal (161)---------"
 	@echo " 11831 - Sticker Collector"
 	@echo " 11906 - Knight in a War Grid"
+	@echo "---- Flood Fill/ Finding Connected Components ---------"
+	@echo " 11094 - Continents"
+	@echo " 11953 - Battleships"
+	@echo "---- Topological Sort --------"
+	@echo "---- Bipartite Graph Check --------"
+	@echo "---- Finding Articulation Points/Bridges --------"
+	@echo "---- Finding Strongly Connected Components -------"
+	@echo " "
+	@echo " Minimum Spanning Tree "
+	@echo " Single-Source Shortest Paths"
+	@echo " "
+	@echo " Mathematics "
+	@echo " String Processing "
+	@echo " Geometry "
 
 ################################################################################
 # Performance Testing
@@ -642,4 +658,11 @@ count:
 	@echo "Runnning UVA10306"
 	javac $(SRC)/UVa10306.java -d $(TARGET)
 	java -cp $(TARGET) uva10306.Main < $(RSRC)/uva10306_in.txt | diff -s -y $(RSRC)/uva10306_out.txt -
+
+#######################################################
+11831:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11831"
+	javac $(SRC)/UVa11831.java -d $(TARGET)
+	java -cp $(TARGET) uva11831.Main < $(RSRC)/uva11831_in.txt | diff -s -y $(RSRC)/uva11831_out.txt -
 
