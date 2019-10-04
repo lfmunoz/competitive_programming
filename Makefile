@@ -132,7 +132,7 @@ default:
 	@echo "---- Graph ---------"
 	@echo " "
 	@echo "---- Just Graph Traversal (161)---------"
-	@echo " 11831 - Sticker Collector"
+	@echo " 11831 - Sticker Collector - [DONE]"
 	@echo " 11906 - Knight in a War Grid"
 	@echo "---- Flood Fill/ Finding Connected Components ---------"
 	@echo " 11094 - Continents"
@@ -665,4 +665,11 @@ count:
 	@echo "Runnning UVA11831"
 	javac $(SRC)/UVa11831.java -d $(TARGET)
 	java -cp $(TARGET) uva11831.Main < $(RSRC)/uva11831_in.txt | diff -s -y $(RSRC)/uva11831_out.txt -
+
+#######################################################
+11906:
+	--mkdir -p target/classes
+	@echo "Runnning UVA11906"
+	javac $(SRC)/UVa11906.java -d $(TARGET)
+	java -cp $(TARGET) uva11906.Main < $(RSRC)/uva11906_in.txt | diff -s -y $(RSRC)/uva11906_out.txt -
 
