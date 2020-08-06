@@ -1,99 +1,139 @@
-Competitive Programming
-=====
+## Competitive Programming
+
+This repository is a bunch of Algorithms and Data Structures problems and solutions. 
+
+My goal is to go through all the **must try** problems of the book 
+Competitive Programming 3 by Steven Halim and Felix Halim. So this is a sort of 
+solution manual. 
 
 
+The core directive in Competitive Programming is
 
-Build
------
-
-
-Binary Indexed(Fenwick) Tree
-Segment Tree
+> Given well-known Computer Science (CS) problems, solve them as quickly as possible!
 
 
+#### Problem Set 
 
-Skipped SegmentTree
-UVa11402
+```
+	---- 1D Array Manipulation ----
+	 10038 Jolly Jumper - [Done]
+	 11340 Newspaper - [Done]
+	---- 2D Array Manipulation ----
+	 10855 Rotated squares - [Done]
+	 10920 Spiral Tap - [Done]
+	 11581 Grid Successors --- [Done]
+	---- Java Collections ##
+	 00146 ID Codes - [Done]
+	 10107 What is the Median - [Done]
+	 10258 Contest Scoreboard - [Done]
+	---- Bit Manipulation ---
+	 11926 Multitasking - [Done]
+	 11933 Splitting Numbers - [Done]
+	---- Java LinkedList ----
+	 11988 Broken Keyboard - [Done]
+	---- Java Stack ----
+	 00514 Rails - [Done]
+	 00732 Anagram by Stack [Done w/ TLE]
+	---- Java Queue and Deque ----
+	 10172 The Lonesome Cargo [Skipped]
+	 10901 Ferry Loading III - [Done]
+	 11034 Ferry Loading IV - [Done]
+	 
+	---- Java TreeMap ----
+	 10226 - Hardwood Species - [Done]
+	 11286 - Conformity - [Done]
+	---- Java TreeSet ----
+	 00978 - Lemmings Battle (use multiset) - [DONE]
+	 11136 - Hoax or what (use multiset) - [DONE]
+	 11849 - CD (set or hashing) -[DONE]
+	---- Java PriorityQueue ----
+	 01203 - Argus - [DONE]
+	 10954 - Add all - [DONE]
+	 11995 - I can Guess...[RTE]
+	 
+	---- Graph Data Structures ----
+	 00599 - The Forrest for the Trees [DONE]
+	 10895 - Matrix Tranpose [DONE]
+	 11991 - Easy Problem from...[DONE]
+	---- Union-Find Disjint Sets ----
+	 00793 - Network Connections* [DONE]
+	 10507 - Waking up brain* [DONE]
+	 11503 - Virtual Friends* [DONE]
+	---- Tree-related Data Structures ----
+	 11235 - Frequent Values* (Sparse Table)[DONE] 
+	 11402 - Ahoy, Pirates (SegmentTree) [SKIP]
+	 
+	---- Complete Search ----
+	---- Iterative (One Loop, Linear Scan) ----
+	 00927 - Integer Sequence From ... [DONE]
+	 01237 - Expert Enough - [DONE]
+	 10976 - Fractions Again? -[ DONE]
+	---- Iterative (Two Nested Loops) ----
+	 01260 - Sales * [DONE]
+	 10487 - Closest Sums * [DONE]
+	 11242 - Tour de France *[DONE]
+	---- Iterative (Three or More Nested Loops, Easier) ----
+	 00441 - Lotto *[DONE]
+	 00725 - Dart-a-Mania*[DONE]
+	 10102 - The Path in the ...*[DONE]
+	---- Iterative (Three-or-More Nested Loops, Harder) ----
+	 10660 - Citizen attention ... * [DONE]
+	 11565 - Simple Equations *[DONE]
+	---- Fancy Techniques ----
+	 11553 - Grid Game *[DONE]
+	---- Recursive Backtracking (Easy) ----
+	 00624 - CD * [DONE]
+	 10576 - Y2K Accounting Bug [DONE]
+	 11085 - Back to the 8-Queens [DONE]
+	---- Recursive Backtracking (Medium) ----
+	 00524 - Prime Ring Problem [ORDER WRONG]
+	 00574 - Sum It Up [DONE]
+	 10503 - The dominoes soliaire [DONE]
+	---- Recursive Backtracking (hard) ----
+	 00193 - Graph Coloring - [DONE]
+	 00416 - LED Test - [DONE]
+	 
+	---- Divide and Conquer ----
+	---- Binary Search ---------
+	 11057 - Exact Sum [DONE]
+	---- Bisection Method ---------
+	 10341 - Solve It - [DONE]
+	 11413 - Fill the ..[DONE]
+	---- Greedy --------------------
+	 11389 - The Bus Driver Problem [DONE]
+	 11292 - Dragon of Loowater -[DONE]
+	 10656 - Maximum Sum (II) [DONE]
+	 10718 - Bit Mask - [DONE]
+	 11157 - Dynamic Frog
+	---- Dynamic Programming ---------
+	---- Graph ---------
+	 11831 - Sticker Collector
+	 11906 - Knight in a War Grid
+```
 
 
-    $ rebar3 compile
+#### Project 
 
- while (scan.hasNext()) {
- 
- 
-int a = scn.nextInt();
-String b = scn.nextLine();
-scan.hasNext()
+```
 
-My favourite way, how to read input is to use BufferedReader:
-
-BufferedReader br = new BufferedReader( new InputStreamReader( System.in ) );
-number of test cases defined
-if number of test cases is defines (typically first line in input file), I'm doing...
-
-int T = Integer.parseInt( br.readLine() )
-while ( T-- > 0 ) {
-    // for each test case
-    String[] tmp = br.readLine().split( " " ); // typically separated by 1 space
-    // in your case, there are 2 integers in line
-    int i1 = Integer.parseInt( tmp[0] );
-    int i2 = Integer.parseInt( tmp[1] );
-    solve( i1, i2 ); // solve() method solves one test case
-}
-special end case
-Sometimes there is special case that simply defines end of test file, for example in your case it could be "0 0", in such case I'd do:
-
-String line = br.readLine();
-while ( ! "0 0".equals( line ) ) {
-    // for each test case, very similar to the previous code
-    String[] tmp = line.split( " " );
-    int i1 = Integer.parseInt( tmp[0] );
-    int i2 = Integer.parseInt( tmp[1] );
-    solve( i1, i2 );
-    line = br.readLine(); // do not forget to read next line !
-}
-no special end case
-In this case you simply stop when you reach the end of file. It's very similar to the previous one again:
-
-String line = br.readLine();
-while ( line != null ) {
-    // for each test case, very similar to the previous code
-    String[] tmp = line.split( " " );
-    int i1 = Integer.parseInt( tmp[0] );
-    int i2 = Integer.parseInt( tmp[1] );
-    solve( i1, i2 );
-    line = br.readLine();
-}
+├── cpp
+├── java
+│   ├── build.gradle
+│   ├── competitive_programming.iml
+│   ├── create_new.sh
+│   ├── gradle
+│   ├── gradlew
+│   ├── Makefile
+│   ├── README.md
+│   ├── settings.gradle
+│   └── src
+└── README.md
 
 
+```
 
-Convert Recursion to Iteration
-http://blog.moertel.com/archive.html
+```
+# To run look at Makefile
+make 10038
+```
 
-
-
-
-Recursive Backtracking
-
-
-    String display(Pair[] result) {
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < result.length-1; i++) {
-            sb.append(result[i]);
-            sb.append(" ");
-        }
-        sb.append(result[result.length-1]);
-        return sb.toString();
-    }
-
-    void swap(int[] result, int a, int b) {
-        int tmp = result[a];
-        result[a] = result[b];
-        result[b] = tmp;
-    }
-    void indent(int n) {
-        for(int i =0; i < n; i++) {
-            System.out.printf(" ");
-        }
-
-    }
