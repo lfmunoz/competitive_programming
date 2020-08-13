@@ -1,0 +1,74 @@
+
+
+Reference
+https://abitofcs.blogspot.com/search/label/UVa
+http://www.cplusplus.com/reference/vector/vector/size/
+
+## Common input patterns
+
+```
+
+//  include the standard template library (STL)
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+
+
+int n, k, t; 
+int cnt = 0; 
+cin >> n >> k; 
+for (int i=0; i<n; i++) { 
+  cin >> t; 
+  if (t % k == 0) cnt++; 
+} 
+
+
+
+int length; cin >> length;
+vector<int> sequence; sequence.reserve(length);
+copy_n(istream_iterator<int>(cin), length, back_inserter(sequence));
+
+
+int rows, cols; cin >> rows >> cols; 
+vector<vector<int>> matrix; matrix.resize(rows); 
+for (auto& row : matrix)
+{    
+   row.reserve(cols); 
+   copy_n(istream_iterator<int>(cin), cols, back_inserter(row)); 
+}
+
+
+
+cin >> N >> std::ws;
+getline(cin, line);
+
+
+
+int N, T, t; cin >> N >> T;
+vector<int> arr; arr.reserve(N);
+copy_n(istream_iterator<int>(cin), N, back_inserter(arr));
+// pre-process here
+while (T--) 
+{
+  cin >> t;
+  // solve here
+}
+
+
+
+```
+
+## Common output patterns
+
+```
+
+cout << ans1 << " " << ans2 << "\n";
+
+
+cout << fixed << setprecision(2) << num1 << " " << num2;
+
+
+```
+
