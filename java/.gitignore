@@ -1,0 +1,11 @@
+.idea/
+out/
+target/
+*.log
+tmp.txt
+
+build/
+.gradle/
+
+
+.vscode/

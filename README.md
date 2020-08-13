@@ -3,9 +3,7 @@
 This repository is a bunch of Algorithms and Data Structures problems and solutions. 
 
 My goal is to go through all the **must try** problems of the book 
-Competitive Programming 3 by Steven Halim and Felix Halim. So this is a sort of 
-solution manual. 
-
+Competitive Programming 3 by Steven Halim and Felix Halim. So this is a sort of solution manual. 
 
 The core directive in Competitive Programming is
 
@@ -15,6 +13,9 @@ The core directive in Competitive Programming is
 #### Problem Set 
 
 ```
+------------------------------------------
+	Data Structures
+------------------------------------------
 	---- 1D Array Manipulation ----
 	 10038 Jolly Jumper - [Done]
 	 11340 Newspaper - [Done]
@@ -63,7 +64,9 @@ The core directive in Competitive Programming is
 	 11235 - Frequent Values* (Sparse Table)[DONE] 
 	 11402 - Ahoy, Pirates (SegmentTree) [SKIP]
 	 
-	---- Complete Search ----
+------------------------------------------
+	Complete Search 
+------------------------------------------
 	---- Iterative (One Loop, Linear Scan) ----
 	 00927 - Integer Sequence From ... [DONE]
 	 01237 - Expert Enough - [DONE]
@@ -93,22 +96,63 @@ The core directive in Competitive Programming is
 	 00193 - Graph Coloring - [DONE]
 	 00416 - LED Test - [DONE]
 	 
-	---- Divide and Conquer ----
-	---- Binary Search ---------
-	 11057 - Exact Sum [DONE]
-	---- Bisection Method ---------
-	 10341 - Solve It - [DONE]
-	 11413 - Fill the ..[DONE]
-	---- Greedy --------------------
-	 11389 - The Bus Driver Problem [DONE]
-	 11292 - Dragon of Loowater -[DONE]
-	 10656 - Maximum Sum (II) [DONE]
-	 10718 - Bit Mask - [DONE]
-	 11157 - Dynamic Frog
-	---- Dynamic Programming ---------
-	---- Graph ---------
-	 11831 - Sticker Collector
-	 11906 - Knight in a War Grid
+------------------------------------------
+	Dynamic Programming 
+------------------------------------------
+
+	 00787 - Maximum Sub - [DONE]"
+	 10684 - The Jackpot - [DONE]"
+	 00108 - Maximum Sum - [DONE]"
+	 10827 - Maximum Sum on..[DONE]"
+	 00481 - What Goes up? [TLE]"
+	 11456 - Trainsorting - [DONE]"
+	 11790 - Murcia's Skyline - [DONE]"
+
+	 --- Knapsack (Subset Sum) --- "
+	 10616 - Divisible Group Sum [Come back to this ]"
+	 10819 - Trouble of 13-Dots - [DONE]"
+
+	 --- Coin Change (CC) --- "
+	 00357 - Let Me Count The ways - [DONE]"
+	 10306 - e-Coins [RETURN TO ME !!!****!!!!!]"
+	 11517 - Exact Change"
+
+	 --- Traveling Salesman Problem (TSP) --- "
+	 00216 - Getting in Line"
+	 10496 - Collecting Beepers"
+	 11284 - Shopping Trip"
+
+	 --- Non Classical --- "
+
+	 10337 - Flight Planner"
+	 10721 - Bar Codes"
+	 10943 - How do you add?"
+
+------------------------------------------
+	Graph
+------------------------------------------
+
+	---- Just Graph Traversal (161)---------"
+	 11831 - Sticker Collector - [DONE]"
+	 11906 - Knight in a War Grid"
+	---- Flood Fill/ Finding Connected Components ---------"
+	 11094 - Continents"
+	 11953 - Battleships"
+	---- Topological Sort --------"
+	---- Bipartite Graph Check --------"
+	---- Finding Articulation Points/Bridges --------"
+	---- Finding Strongly Connected Components -------"
+
+	 Minimum Spanning Tree
+
+	 Single-Source Shortest Paths
+
+	 Mathematics
+
+	 String Processing 
+
+	 Geometry 
+
 ```
 
 
@@ -137,3 +181,6 @@ The core directive in Competitive Programming is
 make 10038
 ```
 
+
+
+https://cses.fi/book/book.pdf
