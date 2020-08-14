@@ -1,6 +1,6 @@
 /*
 
-    https://www.udebug.com/UVa/00216
+    https://www.udebug.com/UVa/216
 
     https://stackoverflow.com/questions/58352944/how-to-run-program-in-a-pop-out-console-window-using-vs-code
 
@@ -73,20 +73,31 @@ ostream& operator<<(ostream& os, const vector<T>& v)
 
 ostream& operator<<(ostream& os, const Point& point) 
 { 
-    os << "(" << point.x << " " << point.y << ")"; 
+    os << "(" << point.x << "," << point.y << ")"; 
     return os; 
 } 
 
+template<typename T>
+std::vector<T> create_copy(std::vector<T> const &vec)
+{
+	std::vector<T> v(vec);
+	return v;
+}
 
-vector<Point> vec_points;
-double minOfVector = DBL_MAX;
+
+double minOfVector;
+vector<Point> minPointsVector;
+vector<Point> currentPointsVector;
+
+map<string, Point> memomizeMap; 
 
 
 // ________________________________________________________________________________
 // HELPER METHODS
 // ________________________________________________________________________________
 double distance(Point pA, Point pB) {
-    return sqrt( pow(pA.x - pB.x, 2 ) + pow(pA.y - pB.y, 2)) + 16;
+    double distance = sqrt( pow(pA.x - pB.x, 2 ) + pow(pA.y - pB.y, 2)) + 16;
+    return distance;
 }
 
 double total_distance(vector<Point> pVector) {
@@ -110,9 +121,17 @@ vector<Point> copyAndSwap(vector<Point> a_vector, uint32 idx_A, uint32 idx_B) {
 }
 
 
-void permutation(vector<Point> a_vector, uint32 idx) {
+void permutation(const vector<Point> a_vector, uint32 idx) {
     if(idx == a_vector.size()) {
-        minOfVector = std::min(minOfVector,total_distance(a_vector));
+        // cout << idx << endl;
+        double distance = total_distance(a_vector);
+        if( distance <  minOfVector) {
+            // cout << distance << " is smaller than " << minOfVector << endl;
+            // cout << "set to " << a_vector << endl;
+            minOfVector = distance;
+            minPointsVector = create_copy(a_vector);
+        }
+        return;
     }
     for(uint32 i = idx; i < a_vector.size(); i++) {
         vector<Point> p_vector = copyAndSwap(a_vector, idx, i);
@@ -125,42 +144,58 @@ void permutation(vector<Point> a_vector, uint32 idx) {
 // ________________________________________________________________________________
 void initialize() {
     ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+    cin.tie(0); 
+    // cout.tie(0);
     #ifdef DEFAULT
-        freopen("input.txt", "r", stdin);
-        // freopen("default.txt", "r", stdin);
+        // printf("DEFAULT is defined \n");
+        // freopen("input.txt", "r", stdin);
+        // freopen("inputB.txt", "r", stdin);
     #endif
 
     std::cout << std::fixed;
     std::cout << std::setprecision(2);
 }
 
-void compute(const vector<Point> &aVector ) {
-    int N = aVector.size() - 1;
-    permutation(aVector, 0);
-}
-
 // ________________________________________________________________________________
 // MAIN
 // ________________________________________________________________________________
+
 
 int main() {
     initialize();
     // uint32 X, Y, N;
     uint32 N;
+    uint32 problemNumber = 1;
     while(true) {
+        minOfVector = DBL_MAX;
+        minPointsVector.clear();
+        currentPointsVector.clear();
         cin >> N;
         if(N == 0) break;
         for(uint32 i = 0; i < N;  i++) {
             Point aPoint;
             cin >> aPoint.x >> aPoint.y;
-            vec_points.push_back(aPoint);
+            currentPointsVector.push_back(aPoint);
         }
-        compute(vec_points);
-        cout << minOfVector << "\n";
-    }
+        permutation(currentPointsVector, 0);
 
-    // cout << vec_points << "\n";
+        // cout << minOfVector << endl;
+        // cout << minPointsVector << endl;
+        // cout << currentPointsVector << endl;
+
+        double total = 0;
+        cout << "**********************************************************" << endl;
+        cout << "Network #" << problemNumber++ << "\n";
+        for(uint32 i = 0; i < minPointsVector.size() - 1; i++) {
+            double dist = distance(minPointsVector[i], minPointsVector[i+1]);
+            cout << "Cable requirement to connect " << minPointsVector[i]
+                 << " to " << minPointsVector[i+1] << " is " << dist 
+                 << " feet." << "\n";
+            total += dist;
+        }
+        cout << "Number of feet of cable required is " << total << ".\n";
+
+    }
 
 
     return 0;
