@@ -1,14 +1,17 @@
 
 
-.PHONY: new
+.PHONY: uva
 
-default:
-	g++ --version 
+default: MainApp.class
+	java MainApp
 
+MainApp.class: MainApp.java
+	javac MainApp.java
+	# ./main input.txt | diff -s -y output.txt -
 
-new: 
-	cp -r ./template uva00012
+uva: MainApp.class
+	javac MainApp.java
+	java MainApp |  diff -s -y outputB.txt -
 
-
-uva00787: uva00787/main.elf
-	$(MAKE) -c uva00787
+clean:
+	rm MainApp.class

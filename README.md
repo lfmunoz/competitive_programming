@@ -19,22 +19,28 @@ The core directive in Competitive Programming is
 	---- 1D Array Manipulation ----
 	 10038 Jolly Jumper - [Done]
 	 11340 Newspaper - [Done]
+
 	---- 2D Array Manipulation ----
 	 10855 Rotated squares - [Done]
 	 10920 Spiral Tap - [Done]
 	 11581 Grid Successors --- [Done]
+
 	---- Java Collections ##
 	 00146 ID Codes - [Done]
 	 10107 What is the Median - [Done]
 	 10258 Contest Scoreboard - [Done]
+
 	---- Bit Manipulation ---
 	 11926 Multitasking - [Done]
 	 11933 Splitting Numbers - [Done]
+
 	---- Java LinkedList ----
 	 11988 Broken Keyboard - [Done]
+
 	---- Java Stack ----
 	 00514 Rails - [Done]
 	 00732 Anagram by Stack [Done w/ TLE]
+
 	---- Java Queue and Deque ----
 	 10172 The Lonesome Cargo [Skipped]
 	 10901 Ferry Loading III - [Done]
@@ -43,10 +49,12 @@ The core directive in Competitive Programming is
 	---- Java TreeMap ----
 	 10226 - Hardwood Species - [Done]
 	 11286 - Conformity - [Done]
+
 	---- Java TreeSet ----
 	 00978 - Lemmings Battle (use multiset) - [DONE]
 	 11136 - Hoax or what (use multiset) - [DONE]
 	 11849 - CD (set or hashing) -[DONE]
+
 	---- Java PriorityQueue ----
 	 01203 - Argus - [DONE]
 	 10954 - Add all - [DONE]
@@ -56,10 +64,12 @@ The core directive in Competitive Programming is
 	 00599 - The Forrest for the Trees [DONE]
 	 10895 - Matrix Tranpose [DONE]
 	 11991 - Easy Problem from...[DONE]
-	---- Union-Find Disjint Sets ----
+
+	---- Union-Find Disjoint Sets ----
 	 00793 - Network Connections* [DONE]
 	 10507 - Waking up brain* [DONE]
 	 11503 - Virtual Friends* [DONE]
+
 	---- Tree-related Data Structures ----
 	 11235 - Frequent Values* (Sparse Table)[DONE] 
 	 11402 - Ahoy, Pirates (SegmentTree) [SKIP]
@@ -71,27 +81,34 @@ The core directive in Competitive Programming is
 	 00927 - Integer Sequence From ... [DONE]
 	 01237 - Expert Enough - [DONE]
 	 10976 - Fractions Again? -[ DONE]
+
 	---- Iterative (Two Nested Loops) ----
 	 01260 - Sales * [DONE]
 	 10487 - Closest Sums * [DONE]
 	 11242 - Tour de France *[DONE]
+
 	---- Iterative (Three or More Nested Loops, Easier) ----
 	 00441 - Lotto *[DONE]
 	 00725 - Dart-a-Mania*[DONE]
 	 10102 - The Path in the ...*[DONE]
+
 	---- Iterative (Three-or-More Nested Loops, Harder) ----
 	 10660 - Citizen attention ... * [DONE]
 	 11565 - Simple Equations *[DONE]
+
 	---- Fancy Techniques ----
 	 11553 - Grid Game *[DONE]
+
 	---- Recursive Backtracking (Easy) ----
 	 00624 - CD * [DONE]
 	 10576 - Y2K Accounting Bug [DONE]
 	 11085 - Back to the 8-Queens [DONE]
+
 	---- Recursive Backtracking (Medium) ----
 	 00524 - Prime Ring Problem [ORDER WRONG]
 	 00574 - Sum It Up [DONE]
 	 10503 - The dominoes soliaire [DONE]
+
 	---- Recursive Backtracking (hard) ----
 	 00193 - Graph Coloring - [DONE]
 	 00416 - LED Test - [DONE]
@@ -117,13 +134,12 @@ The core directive in Competitive Programming is
 	 10306 - e-Coins [RETURN TO ME !!!****!!!!!]"
 	 11517 - Exact Change"
 
-	 --- Traveling Salesman Problem (TSP) --- "
-	 00216 - Getting in Line"
-	 10496 - Collecting Beepers"
+	 --- Traveling Salesman Problem (TSP) --- 
+	 00216 - Getting in Line - C++ DONE
+	 10496 - Collecting Beepers
 	 11284 - Shopping Trip"
 
 	 --- Non Classical --- "
-
 	 10337 - Flight Planner"
 	 10721 - Bar Codes"
 	 10943 - How do you add?"
@@ -135,9 +151,11 @@ The core directive in Competitive Programming is
 	---- Just Graph Traversal (161)---------"
 	 11831 - Sticker Collector - [DONE]"
 	 11906 - Knight in a War Grid"
+
 	---- Flood Fill/ Finding Connected Components ---------"
 	 11094 - Continents"
 	 11953 - Battleships"
+
 	---- Topological Sort --------"
 	---- Bipartite Graph Check --------"
 	---- Finding Articulation Points/Bridges --------"

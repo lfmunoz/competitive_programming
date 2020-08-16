@@ -1,1 +1,6 @@
 .vscode/
+.idea/
+**.class
+
+java/_template
+cpp/_template
