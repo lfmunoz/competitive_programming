@@ -11,8 +11,7 @@ main.elf: main.cpp
 
 uva: main.elf
 	g++ -D PROD -std=c++11 -O2 -Wall main.cpp -o main.elf
-	# ./main input.txt | diff -s -y output.txt -
-	./main.elf
+	./main.elf |  diff -s -y outputB.txt -
 
 clean: 
 	rm main.elf
