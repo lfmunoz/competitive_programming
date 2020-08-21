@@ -2,5 +2,10 @@
 .idea/
 **.class
 
+**.elf
+**.o
+
 java/_template
 cpp/_template
+
+DELETEME/
