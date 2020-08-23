@@ -12,50 +12,15 @@
 
 using namespace std;
 
-#if defined(IS_TEST)
-
-#endif
-
-typedef long int int32;
-typedef unsigned long int uint32;
-typedef long long int int64;
-typedef unsigned long long int  uint64;
-
 // ________________________________________________________________________________
 // CODE 
 // ________________________________________________________________________________
-
-class Symbol  {
-    public:
-    string encoded;
-    string decoded;
-    int frequency = 0;
-
-    Symbol(string _encoded) {
-        encoded = _encoded;
-    }
-
-
-};
-
-ostream& operator<<(ostream& os, const Symbol& point) 
-{ 
-    os << "(" << point.encoded << "=" << point.decoded << ")"; 
-    return os; 
-} 
-
 
 
 // ________________________________________________________________________________
 // HELPER METHODS
 // ________________________________________________________________________________
-Symbol* mapContainsKey(std::map<string, Symbol>& map, string key) {
-  auto it = map.find(key);
-  if ( map.end() != it ) { 
-      return &it->second;
-  }
-  return NULL;
-}
+
 
 // ________________________________________________________________________________
 // SOLUTION
@@ -73,24 +38,23 @@ void initialize() {
 }
 
 
-int intToAscii(int number) {
-   return '0' + number;
+
+// | oo o.ooo| -> oo o.ooo
+string clean_string(string& aLine) {
+    aLine.erase(10, 1); // |
+    aLine.erase(6, 1); // .
+    aLine.erase(1, 1); // space
+    aLine.erase(0, 1); // |
+    return aLine;
 }
 
-// 0123456789A
-// | oo o.ooo|
-int stringToInt(string& aLine) {
-    aLine.erase(10, 1);
-    aLine.erase(6, 1);
-    aLine.erase(1, 1);
-    aLine.erase(0, 1);
-
-    cout << "size " << aLine.size() << endl;
-
+//  oooo.ooo -> 64
+int string_to_int(string& aLine) {
+    clean_string(aLine);
     int decodedValue = 0;
     for (std::string::size_type i = 0; i < aLine.size(); i++) {
         if(aLine[i] == 'o') {
-            decodedValue = (64 >> i + decodedValue);
+            decodedValue = (64 >> i) + decodedValue;
         } 
     }
     return decodedValue;
@@ -100,8 +64,6 @@ int stringToInt(string& aLine) {
 // MAIN
 // ________________________________________________________________________________
 string START_END = "___________";
-map<string, Symbol> symbolVector;
-map<string, int> mapStringInt;
 
 #if !defined(IS_TEST)
 
@@ -109,18 +71,24 @@ int main() {
     initialize();
     string line;
     getline(cin, line);
-    int x = 0;
+
+    // return 0;
+
     while(true) {
         getline(cin, line);
         if(line.compare(START_END) == 0) break;
-        // cout <<  ( char )stringToInt(line);
-        cout <<  stringToInt(line);
-        cout << endl;
-        x++;
-
-        if(x == 4) break;
+        int charAsInt = string_to_int(line);
+            //  cout << charAsInt << endl;
+        if(charAsInt > 31 && charAsInt < 127) {
+            cout << (char) charAsInt;
+        } else if(charAsInt == 10 || charAsInt == 13) {
+            cout << "\n";
+        } else if(charAsInt == 9 ) {
+            cout << "\t";
+        } else if(charAsInt == 8 ) {
+            cout << "\b";
+        } 
     }
-    cout << "\n";
 
     return 0;
 }
