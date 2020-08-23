@@ -1,6 +1,4 @@
-package reference;
-
-
+package ref;
 
 import java.util.*;
 import java.util.function.Function;

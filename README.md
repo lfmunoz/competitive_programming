@@ -177,7 +177,7 @@ Single-Source Shortest Paths
 ------------------------------------------
 Cipher/Encode/Encrypt/Decode/Decrypt, Easier
 
-UVa 10878 - Decode the Tape
+UVa 10878 - Decode the Tape - [DONE] C++
 UVa 10851 - 2D Hieroglyphs ...
 UVa 11278 - One-Handed Typist *
 
@@ -263,27 +263,17 @@ UVa 10927 - Bright Lights * (sort points by gradient, Euclidean distance)
 
 ```
 
-├── cpp
-├── java
-│   ├── build.gradle
-│   ├── competitive_programming.iml
-│   ├── create_new.sh
-│   ├── gradle
-│   ├── gradlew
-│   ├── Makefile
-│   ├── README.md
-│   ├── settings.gradle
-│   └── src
-└── README.md
+
+
+```
 
 
 ```
 
 ```
-# To run look at Makefile
-make 10038
-```
 
 
+
+# References
 
 https://cses.fi/book/book.pdf
