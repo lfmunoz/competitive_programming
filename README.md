@@ -178,7 +178,7 @@ Single-Source Shortest Paths
 Cipher/Encode/Encrypt/Decode/Decrypt, Easier
 
 UVa 10878 - Decode the Tape - [DONE] C++
-UVa 10851 - 2D Hieroglyphs ...
+UVa 10851 - 2D Hieroglyphs ... [DONE] C++
 UVa 11278 - One-Handed Typist *
 
 Cipher/Encode/Encrypt/Decode/Decrypt, Harder

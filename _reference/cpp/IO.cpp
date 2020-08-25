@@ -22,7 +22,18 @@ void read_line_by_line() {
 }
 
 
+void number_then_lines() {
+    int N;
+    string line;
 
+    cin >> N; 
+    // istream& ignore (streamsize n = 1, int delim = EOF);
+    cin.ignore(); // eat new line
+
+    for(int n = 0; n < N; n++) {
+        getline(cin, line);  /// START ROW
+    }
+}
 
 // ________________________________________________________________________________
 // OUTPUT

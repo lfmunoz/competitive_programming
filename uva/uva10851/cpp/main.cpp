@@ -1,8 +1,5 @@
 /*
-
     https://www.udebug.com/UVa/10851
-
-
 */
 
 // ________________________________________________________________________________
@@ -15,15 +12,12 @@ using namespace std;
 // ________________________________________________________________________________
 // CODE 
 // ________________________________________________________________________________
-
+unsigned char set_bit(unsigned char *x, int bitNum) {
+    return *x |= (1 << bitNum);
+}
 
 // ________________________________________________________________________________
 // HELPER METHODS
-// ________________________________________________________________________________
-
-
-// ________________________________________________________________________________
-// SOLUTION
 // ________________________________________________________________________________
 void initialize() {
     ios_base::sync_with_stdio(0);
@@ -38,26 +32,25 @@ void initialize() {
 }
 
 
-
-// | oo o.ooo| -> oo o.ooo
-string clean_string(string& aLine) {
-    aLine.erase(10, 1); // |
-    aLine.erase(6, 1); // .
-    aLine.erase(1, 1); // space
-    aLine.erase(0, 1); // |
-    return aLine;
+// ________________________________________________________________________________
+// SOLUTION
+// ________________________________________________________________________________
+void itr_arr(string stringArr[]) {
+    for(int i = 0; i < 8; i++) {
+       cout << stringArr[i] << "\n";
+    }
 }
 
-//  oooo.ooo -> 64
-int string_to_int(string& aLine) {
-    clean_string(aLine);
-    int decodedValue = 0;
-    for (std::string::size_type i = 0; i < aLine.size(); i++) {
-        if(aLine[i] == 'o') {
-            decodedValue = (64 >> i) + decodedValue;
-        } 
+void decode(string stringArr[], int M) {
+    for(int col = 1; col < M-1; col++) {
+        unsigned char ourByte = 0;
+        for(int i = 0; i < 8; i++) {
+            if(stringArr[i][col] == '\\') {
+                set_bit(&ourByte, i);
+            }
+        }
+        cout << ourByte;
     }
-    return decodedValue;
 }
 
 // ________________________________________________________________________________
@@ -69,26 +62,28 @@ string START_END = "___________";
 
 int main() {
     initialize();
+
     string line;
-    getline(cin, line);
+    int N;
 
-    // return 0;
-
-    while(true) {
-        getline(cin, line);
-        if(line.compare(START_END) == 0) break;
-        int charAsInt = string_to_int(line);
-            //  cout << charAsInt << endl;
-        if(charAsInt > 31 && charAsInt < 127) {
-            cout << (char) charAsInt;
-        } else if(charAsInt == 10 || charAsInt == 13) {
-            cout << "\n";
-        } else if(charAsInt == 9 ) {
-            cout << "\t";
-        } else if(charAsInt == 8 ) {
-            cout << "\b";
-        } 
+    cin >> N; 
+    cin.ignore(); // eat new line
+    for(int n = 0; n < N; n++) {
+        getline(cin, line);  /// START ROW
+        int M = line.length();
+        string stringArr[8];
+        for(int i = 0; i < 8; i++) {
+            getline(cin, line);
+            stringArr[i] = line;
+        }
+        getline(cin, line); // END ROW
+        getline(cin, line); // NEWLINE
+        decode(stringArr, M);
+        cout << "\n";
     }
+
+
+
 
     return 0;
 }
