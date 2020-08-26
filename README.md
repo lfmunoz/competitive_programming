@@ -179,7 +179,7 @@ Cipher/Encode/Encrypt/Decode/Decrypt, Easier
 
 UVa 10878 - Decode the Tape - [DONE] C++
 UVa 10851 - 2D Hieroglyphs ... [DONE] C++
-UVa 11278 - One-Handed Typist *
+UVa 11278 - One-Handed Typist * [DONE] C++
 
 Cipher/Encode/Encrypt/Decode/Decrypt, Harder
 
@@ -277,3 +277,4 @@ UVa 10927 - Bright Lights * (sort points by gradient, Euclidean distance)
 # References
 
 https://cses.fi/book/book.pdf
+https://github.com/AhmadElsagheer/UVa-Solutions/blob/master/v112/OneHandedTypist_UVa11278.java
