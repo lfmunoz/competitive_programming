@@ -175,62 +175,59 @@ Single-Source Shortest Paths
 ------------------------------------------
 	 String Processing 
 ------------------------------------------
-Cipher/Encode/Encrypt/Decode/Decrypt, Easier
+# Cipher/Encode/Encrypt/Decode/Decrypt, Easier
 
 UVa 10878 - Decode the Tape - [DONE] C++
 UVa 10851 - 2D Hieroglyphs ... [DONE] C++
 UVa 11278 - One-Handed Typist * [DONE] C++
 
-Cipher/Encode/Encrypt/Decode/Decrypt, Harder
+# Cipher/Encode/Encrypt/Decode/Decrypt, Harder
 
-UVa 11385 - Da Vinci Code *
-UVa 11697 - Playfair Cipher *
+UVa 11385 - Da Vinci Code *  [DONE] C++
+UVa 11697 - Playfair Cipher * [DONE] C++ (Wrong Answer but passing all known test cases)
 
-Frequency Counting
-UVa 00902 - Password Search * (read char by char; count word freq)
-UVa 10252 - Common Permutation * (count freq of each alphabet)
-UVa 11203 - Can you decide it ... * (convoluted, but its actually easy) 
+# Frequency Counting
+UVa 00902 - Password Search * (read char by char; count word freq)  [DONE] C++
+UVa 10252 - Common Permutation * (count freq of each alphabet)  [DONE] C++
+UVa 11203 - Can you decide it ... * (convoluted, but its actually easy)  [DONE] C++
 
-Input Parsing (Non Recursive)
-UVa 11878 - Homework Checker * (mathematical expression parsing)
+# Input Parsing (Non Recursive)
+UVa 11878 - Homework Checker * (mathematical expression parsing) [DONE] C++
 
-Input Parsing (Recursive)
-UVa 00622 - Grammar Evaluation * (recursive BNF grammar check/evaluation)
-UVa 10854 - Number of Paths * (recursive parsing plus counting)
+# Input Parsing (Recursive)
+UVa 00622 - Grammar Evaluation * (recursive BNF grammar check/evaluation) [DONE] C++
+UVa 10854 - Number of Paths * (recursive parsing plus counting) [DONE] C++
 
-Solvable with Java String/Pattern class (Regular Expression)
-
+# Solvable with Java String/Pattern class (Regular Expression)
 UVa 00325 - Identifying Legal ... * (see the Java solution above)
 UVa 00494 - Kindergarten Counting ... * (see the Java solution above)
 UVa 10058 - Jimmi’s Riddles * (solvable with Java regular expression
 
-Output Formatting
+# Output Formatting
 UVa 00488 - Triangle Wave * (use several loops)
 UVa 10800 - Not That Kind of Graph * (tedious problem)
 
-String Comparison
+# String Comparison
 UVa 00644 - Immediate Decodability * (use brute force)
 UVa 11048 - Automatic Correction ... * (flexible string comparison with respect to dictionary)
 UVa 11056 - Formula 1 * (sorting, case-insensitive string comparison)
 
-Just Ad Hoc
+# Just Ad Hoc
 UVa 00941 - Permutations * (formula to get the n-th permutation)
 UVa 10393 - The One-Handed Typist * (follow problem description)
 UVa 11452 - Dancing the Cheeky ... * (string period, small input, BF)
 
-
-String Matching Standard
+# String Matching Standard
 UVa 10298 - Power Strings * (find s in s + s, similar to UVa 455)
 UVa 11475 - Extend to Palindromes * (‘border’ of KMP)
 UVa 11576 - Scrolling Sign * (modified string matching; complete search)
 
-
-String Matching  In 2D Grid
+# String Matching  In 2D Grid
 UVa 00422 - Word Search Wonder * (2D grid, backtracking)
 UVa 10010 - Where’s Waldorf ? * (discussed in this section)
 UVa 11283 - Playing Boggle * (2D grid, backtracking, do not count twice)
 
-String Processing with DP
+# String Processing with DP
 UVa 00526 - Edit Distance * (String Alignment/Edit Distance)
 UVa 10192 - Vacation * (Longest Common Subsequence)
 UVa 10635 - Prince and Princess * (find LCS of two permutations)
@@ -238,8 +235,7 @@ UVa 10635 - Prince and Princess * (find LCS of two permutations)
 UVa 11151 - Longest Palindrome * (discussed in this section)
 UVa 11258 - String Partition * (discussed in this section)
 
-Suffix Trie/Tree/Array
-
+# Suffix Trie/Tree/Array
 UVa 00760 - DNA Sequencing * (Longest Common Substring of two strings)
 UVa 11107 - Life Forms * (Longest Common Substring of  1/2 of the strings)
 UVa 11512 - GATTACA * (Longest Repeated Substring)
