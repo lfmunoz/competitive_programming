@@ -149,22 +149,22 @@ UVa	 10943 - How do you add?"
 	Graph
 ------------------------------------------
 
-Just Graph Traversal (161)---------"
-UVa	 11831 - Sticker Collector - [DONE]"
-UVa	 11906 - Knight in a War Grid"
+# Just Graph Traversal (161)
+UVa	 11831 - Sticker Collector - [DONE]
+UVa	 11906 - Knight in a War Grid
 
-Flood Fill/ Finding Connected Components ---------"
+# Flood Fill/ Finding Connected Components
 UVa	 11094 - Continents"
 UVa	 11953 - Battleships"
 
-Topological Sort --------"
-Bipartite Graph Check --------"
-Finding Articulation Points/Bridges --------"
-Finding Strongly Connected Components -------"
+# Topological Sort
+# Bipartite Graph Check 
+# Finding Articulation Points/Bridges 
+# Finding Strongly Connected Components 
 
-Minimum Spanning Tree
+# Minimum Spanning Tree
 
-Single-Source Shortest Paths
+# Single-Source Shortest Paths
 
 
 ------------------------------------------
@@ -183,8 +183,8 @@ UVa 11278 - One-Handed Typist * [DONE] C++
 
 # Cipher/Encode/Encrypt/Decode/Decrypt, Harder
 
-UVa 11385 - Da Vinci Code *  [DONE] C++
-UVa 11697 - Playfair Cipher * [DONE] C++ (Wrong Answer but passing all known test cases)
+UVa 11385 - Da Vinci Code  [DONE] C++
+UVa 11697 - Playfair Cipher  [DONE] C++ (Wrong Answer but passing all known test cases)
 
 # Frequency Counting
 UVa 00902 - Password Search * (read char by char; count word freq)  [DONE] C++
@@ -199,13 +199,18 @@ UVa 00622 - Grammar Evaluation * (recursive BNF grammar check/evaluation) [DONE]
 UVa 10854 - Number of Paths * (recursive parsing plus counting) [DONE] C++
 
 # Solvable with Java String/Pattern class (Regular Expression)
-UVa 00325 - Identifying Legal ... * (see the Java solution above)
-UVa 00494 - Kindergarten Counting ... * (see the Java solution above)
-UVa 10058 - Jimmi’s Riddles * (solvable with Java regular expression
+UVa 00325 - Identifying Legal ... * (see the Java solution above) [DONE] C++
+UVa 00494 - Kindergarten Counting ... * (see the Java solution above) [DONE] C++
+UVa 10058 - Jimmi’s Riddles * (solvable with Java regular expression [DONE] C++
 
 # Output Formatting
-UVa 00488 - Triangle Wave * (use several loops)
-UVa 10800 - Not That Kind of Graph * (tedious problem)
+UVa 00488 - Triangle Wave * (use several loops) [DONE] C++ 
+UVa 10800 - Not That Kind of Graph * (tedious problem) [DONE] C++
+
+
+
+
+
 
 # String Comparison
 UVa 00644 - Immediate Decodability * (use brute force)
