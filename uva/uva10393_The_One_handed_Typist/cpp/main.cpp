@@ -91,11 +91,13 @@ int main() {
 
     while(cin >> F >> N) {
         fingersCannotUse.clear();
-
         while(F--) {
             cin>>a;
             fingersCannotUse.push_back(a);
         }
+
+        // Using this cases wrong answer verdict
+        // copy_n(istream_iterator<int>(cin), F, back_inserter(fingersCannotUse));
         vector<string> fingerTblCopy = fingerTbl;
         std::reverse(fingersCannotUse.begin(),fingersCannotUse.end());
         for(auto i : fingersCannotUse) {

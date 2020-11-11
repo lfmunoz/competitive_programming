@@ -207,20 +207,19 @@ UVa 10058 - Jimmi’s Riddles * (solvable with Java regular expression [DONE] C+
 UVa 00488 - Triangle Wave * (use several loops) [DONE] C++ 
 UVa 10800 - Not That Kind of Graph * (tedious problem) [DONE] C++
 
-
-
-
-
-
 # String Comparison
-UVa 00644 - Immediate Decodability * (use brute force)
-UVa 11048 - Automatic Correction ... * (flexible string comparison with respect to dictionary)
-UVa 11056 - Formula 1 * (sorting, case-insensitive string comparison)
+UVa 00644 - Immediate Decodability * (use brute force) [DONE] C++
+UVa 11048 - Automatic Correction ... * (flexible string comparison with respect to dictionary) [DONE] C++
+UVa 11056 - Formula 1 * (sorting, case-insensitive string comparison) [DONE] C++
 
 # Just Ad Hoc
-UVa 00941 - Permutations * (formula to get the n-th permutation)
-UVa 10393 - The One-Handed Typist * (follow problem description)
-UVa 11452 - Dancing the Cheeky ... * (string period, small input, BF)
+UVa 00941 - Permutations * (formula to get the n-th permutation) - C++ [DONE]
+UVa 10393 - The One-Handed Typist * (follow problem description) - C++ [DONE]
+UVa 11452 - Dancing the Cheeky ... * (string period, small input, BF) - C++ [DONE]
+
+
+
+
 
 # String Matching Standard
 UVa 10298 - Power Strings * (find s in s + s, similar to UVa 455)
