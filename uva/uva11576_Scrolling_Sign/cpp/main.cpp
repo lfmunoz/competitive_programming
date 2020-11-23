@@ -1,6 +1,6 @@
 /*
 
-    https://www.udebug.com/UVa/00012
+   https://www.udebug.com/UVa/11576
 
 
 */
@@ -36,57 +36,50 @@ void initialize() {
 // ________________________________________________________________________________
 // SOLUTION
 // ________________________________________________________________________________
-
-// | oo o.ooo| -> oo o.ooo
-string clean_string(string& aLine) {
-    aLine.erase(10, 1); // |
-    aLine.erase(6, 1); // .
-    aLine.erase(1, 1); // space
-    aLine.erase(0, 1); // |
-    return aLine;
-}
-
-//  oooo.ooo -> 64
-int string_to_int(string& aLine) {
-    clean_string(aLine);
-    int decodedValue = 0;
-    for (std::string::size_type i = 0; i < aLine.size(); i++) {
-        if(aLine[i] == 'o') {
-            decodedValue = (64 >> i) + decodedValue;
-        } 
+int isMatch (const string &result, const string &line, int pos) {
+    for ( int i = pos; i < result.size (); i++ ) {
+        if ( result[i] != line[i - pos] ) return false;
     }
-    return decodedValue;
+    return true;
 }
+
 
 // ________________________________________________________________________________
 // MAIN
 // ________________________________________________________________________________
-string START_END = "___________";
 
 #if !defined(IS_TEST)
 
 int main() {
     initialize();
-    string line;
-    getline(cin, line);
 
-    // return 0;
+    string result, line;
+    int n, k, w;
 
-    while(true) {
-        getline(cin, line);
-        if(line.compare(START_END) == 0) break;
-        int charAsInt = string_to_int(line);
-            //  cout << charAsInt << endl;
-        if(charAsInt > 31 && charAsInt < 127) {
-            cout << (char) charAsInt;
-        } else if(charAsInt == 10 || charAsInt == 13) {
-            cout << "\n";
-        } else if(charAsInt == 9 ) {
-            cout << "\t";
-        } else if(charAsInt == 8 ) {
-            cout << "\b";
-        } 
+    cin >> n;
+    while(n--) {
+        cin >> k >> w;
+        result = "";
+        while(w--) {
+            cin >> line;
+            if(result.begin() == result.end()) {
+                result += line;
+                continue;
+            }
+            int R = result.size();
+            int cut = 0;
+            for(int r = R - k; r < R; r++) {
+                if( isMatch(result, line, r)) {
+                    cut = R - r;
+                    break;
+                }
+            }
+            result += line.substr(cut);
+        }
+        cout << result.size() << "\n";
     }
+
+ 
 
     return 0;
 }

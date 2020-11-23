@@ -1,8 +1,11 @@
 /*
 
-    https://www.udebug.com/UVa/00012
+    https://www.udebug.com/UVa/10298
 
-
+    It was very tempting to be clever with this problem, meaing that
+    I wanted to find a way to detect when a pattern repeated, something
+    similar to what kmpPreprocess does.  Forget that just
+    check each possibility starting from 1.
 */
 
 // ________________________________________________________________________________
@@ -21,13 +24,15 @@ using namespace std;
 // ________________________________________________________________________________
 // HELPER METHODS
 // ________________________________________________________________________________
-void initialize() {
+void initialize()
+{
     ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    #ifdef DEFAULT
-        // freopen("input.txt", "r", stdin);
-        // freopen("default.txt", "r", stdin);
-    #endif
+    cin.tie(0);
+    cout.tie(0);
+#ifdef DEFAULT
+    // freopen("input.txt", "r", stdin);
+    // freopen("default.txt", "r", stdin);
+#endif
 
     std::cout << std::fixed;
     std::cout << std::setprecision(2);
@@ -36,58 +41,43 @@ void initialize() {
 // ________________________________________________________________________________
 // SOLUTION
 // ________________________________________________________________________________
-
-// | oo o.ooo| -> oo o.ooo
-string clean_string(string& aLine) {
-    aLine.erase(10, 1); // |
-    aLine.erase(6, 1); // .
-    aLine.erase(1, 1); // space
-    aLine.erase(0, 1); // |
-    return aLine;
-}
-
-//  oooo.ooo -> 64
-int string_to_int(string& aLine) {
-    clean_string(aLine);
-    int decodedValue = 0;
-    for (std::string::size_type i = 0; i < aLine.size(); i++) {
-        if(aLine[i] == 'o') {
-            decodedValue = (64 >> i) + decodedValue;
-        } 
+bool isValid(const string &line, int size) {
+    string match = line.substr(0, size);
+    for (int i = 0; i < line.size(); i += size) {
+        string compare = line.substr(i, size);
+        if (compare != match) {
+            return false;
+        }
     }
-    return decodedValue;
+    return true;
 }
 
 // ________________________________________________________________________________
 // MAIN
 // ________________________________________________________________________________
-string START_END = "___________";
+string START_END = ".";
 
 #if !defined(IS_TEST)
 
 int main() {
     initialize();
     string line;
-    getline(cin, line);
-
-    // return 0;
-
-    while(true) {
+    while (true) {
         getline(cin, line);
-        if(line.compare(START_END) == 0) break;
-        int charAsInt = string_to_int(line);
-            //  cout << charAsInt << endl;
-        if(charAsInt > 31 && charAsInt < 127) {
-            cout << (char) charAsInt;
-        } else if(charAsInt == 10 || charAsInt == 13) {
-            cout << "\n";
-        } else if(charAsInt == 9 ) {
-            cout << "\t";
-        } else if(charAsInt == 8 ) {
-            cout << "\b";
-        } 
+        if (line.compare(START_END) == 0) break;
+        int size = 1;
+        while (true) {
+            if (line.size() % size != 0) {
+                size += 1;
+                continue;
+            }
+            if(isValid(line, size)) {
+                cout << line.size() / size << "\n";
+                break;
+            } 
+            size +=1;
+        }
     }
-
     return 0;
 }
 
