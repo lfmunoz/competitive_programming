@@ -217,14 +217,13 @@ UVa 00941 - Permutations * (formula to get the n-th permutation) - C++ [DONE]
 UVa 10393 - The One-Handed Typist * (follow problem description) - C++ [DONE]
 UVa 11452 - Dancing the Cheeky ... * (string period, small input, BF) - C++ [DONE]
 
-
-
-
-
 # String Matching Standard
-UVa 10298 - Power Strings * (find s in s + s, similar to UVa 455)
-UVa 11475 - Extend to Palindromes * (‘border’ of KMP)
-UVa 11576 - Scrolling Sign * (modified string matching; complete search)
+UVa 10298 - Power Strings * (find s in s + s, similar to UVa 455) C++ [DONE]
+UVa 11475 - Extend to Palindromes * (‘border’ of KMP)  C++ [DONE]
+UVa 11576 - Scrolling Sign * (modified string matching; complete search) C++ [DONE]
+
+
+
 
 # String Matching  In 2D Grid
 UVa 00422 - Word Search Wonder * (2D grid, backtracking)
