@@ -1,3 +1,9 @@
+My biggest mistake with this project is not knownig how long each problem took me to complete. but many from my commits someone can figure it out? 
+
+# Design Spec
+
+Create an application to calculate the times for each problem I created. 
+
 ## Competitive Programming
 
 This repository is a bunch of Algorithms and Data Structures problems and solutions. 
