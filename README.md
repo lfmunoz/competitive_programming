@@ -1,8 +1,10 @@
-My biggest mistake with this project is not knownig how long each problem took me to complete. but many from my commits someone can figure it out? 
 
-# Design Spec
 
-Create an application to calculate the times for each problem I created. 
+# Design Spec A1
+My biggest mistake with this project is not knownig how long each problem took me to complete. but maybe from my commits someone can figure it out? 
+
+Someone please create a an application to calculate the time it took me to solve each problem in this git repo.  
+Can probably use commit times of problem and solution.
 
 ## Competitive Programming
 
